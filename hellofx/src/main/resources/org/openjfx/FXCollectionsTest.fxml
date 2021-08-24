@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="606.0" prefWidth="905.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.FXCollectionsTestController">
+   <children>
+      <AnchorPane layoutX="21.0" layoutY="123.0" prefHeight="248.0" prefWidth="257.0" style="-fx-background-color: grey;">
+         <children>
+            <Label layoutX="38.0" layoutY="14.0" text="FXCollectionsList Test" />
+            <Button layoutX="14.0" layoutY="60.0" mnemonicParsing="false" onAction="#listTestAdd" text="List add" />
+            <Button layoutX="15.0" layoutY="101.0" mnemonicParsing="false" onAction="#listTestRemove" text="List remove" />
+            <Button layoutX="17.0" layoutY="143.0" mnemonicParsing="false" text="List update" />
+            <Button layoutX="142.0" layoutY="60.0" mnemonicParsing="false" onAction="#listTestAdds" text="List adds" />
+            <Button layoutX="142.0" layoutY="101.0" mnemonicParsing="false" onAction="#listTestRemoves" text="List removes" />
+            <Button layoutX="14.0" layoutY="185.0" mnemonicParsing="false" onAction="#listTestSort" text="List sort" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="311.0" layoutY="38.0" text="娱乐测试JAVAFX Collections" />
+      <Button layoutX="579.0" layoutY="34.0" mnemonicParsing="false" onAction="#switchToPrimary" text="回到主界面" />
+      <AnchorPane layoutX="318.0" layoutY="78.0" prefHeight="214.0" prefWidth="257.0" style="-fx-background-color: black;">
+         <children>
+            <Label layoutX="38.0" layoutY="14.0" text="FXCollectionsSet Test" />
+            <Button layoutX="26.0" layoutY="63.0" mnemonicParsing="false" onAction="#setTestAdd" text="Set add" />
+            <Button layoutX="26.0" layoutY="102.0" mnemonicParsing="false" onAction="#setTestRemove" text="Set remove" />
+            <Button layoutX="26.0" layoutY="138.0" mnemonicParsing="false" text="Set update" />
+            <Button layoutX="166.0" layoutY="63.0" mnemonicParsing="false" onAction="#setTestAdds" text="Set adds" />
+            <Button layoutX="166.0" layoutY="102.0" mnemonicParsing="false" onAction="#setTestRemovess" text="Set removes" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="691.0" layoutY="78.0" prefHeight="214.0" prefWidth="200.0" style="-fx-background-color: pink;">
+         <children>
+            <Label layoutX="46.0" layoutY="29.0" prefHeight="0.0" prefWidth="123.0" text="FXCollectionsMap Test" />
+            <Button layoutX="12.0" layoutY="59.0" mnemonicParsing="false" onAction="#mapTestAdd" text="Map add" />
+            <Button layoutX="63.0" layoutY="107.0" mnemonicParsing="false" onAction="#mapTestRemove" text="Map remove" />
+            <Button layoutX="65.0" layoutY="153.0" mnemonicParsing="false" text="Map update" />
+            <Button layoutX="118.0" layoutY="59.0" mnemonicParsing="false" onAction="#mapTestAdds" text="Map adds" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="323.0" layoutY="310.0" prefHeight="320.0" prefWidth="511.0" style="-fx-background-color: #ffff66;">
+         <children>
+            <Label layoutX="19.0" layoutY="14.0" text="FXCollectionsList Test With SimpleStringProperty" />
+            <Button layoutX="14.0" layoutY="60.0" mnemonicParsing="false" onAction="#list_proTestAdd" text="List_pro add" />
+            <Button layoutX="15.0" layoutY="101.0" mnemonicParsing="false" onAction="#list_proTestRemove" text="List_pro remove" />
+            <Button layoutX="142.0" layoutY="60.0" mnemonicParsing="false" onAction="#list_proTestAdds" text="List_pro adds" />
+            <Button layoutX="142.0" layoutY="101.0" mnemonicParsing="false" onAction="#list_proTestRemoves" text="List_pro removes" />
+            <Button layoutX="14.0" layoutY="143.0" mnemonicParsing="false" onAction="#list_proTestSort" text="List_pro sort" />
+            <Button layoutX="147.0" layoutY="143.0" mnemonicParsing="false" onAction="#list_proAndSpecialTestAdd" text="List_pro and List_pro_special" textFill="#eb0707" />
+            <AnchorPane layoutX="15.0" layoutY="172.0" prefHeight="144.0" prefWidth="406.0" style="-fx-background-color: #6666ff;">
+               <children>
+                  <TextField fx:id="tf_listpro" layoutX="171.0" layoutY="28.0" prefHeight="38.0" prefWidth="185.0" />
+                  <Button layoutX="171.0" layoutY="79.0" mnemonicParsing="false" onAction="#list_proTestUpdate" prefHeight="38.0" prefWidth="185.0" text="List_pro update" textFill="#eb0707" />
+                  <Label layoutX="8.0" layoutY="47.0" prefHeight="52.0" prefWidth="142.0" text="Update banana things:&#10;(属性必须不一样才更新)&#10;字段监听类似" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <Label layoutX="30.0" layoutY="488.0" text="列表监听(大尺度监听)" textFill="#e41111">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="903.0" layoutY="370.0" prefHeight="248.0" prefWidth="247.0" style="-fx-background-color: green;">
+         <children>
+            <Label layoutX="85.0" text="列表biding" />
+            <Button layoutX="30.0" layoutY="48.0" mnemonicParsing="false" onAction="#listbindTest" text="list bind" />
+            <Button layoutX="30.0" layoutY="77.0" mnemonicParsing="false" onAction="#listbindContentTest" text="list bindContent" />
+            <Label layoutX="41.0" layoutY="131.0" text="set map bind操作类似list" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<AnchorPane accessibleText="what is your age?" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ChoiceButtonController">
+   <children>
+      <AnchorPane layoutX="363.0" layoutY="66.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;">
+         <children>
+            <CheckBox fx:id="ck_tuna" mnemonicParsing="false" text="Tuna" />
+            <CheckBox fx:id="ck_luna" layoutY="45.0" mnemonicParsing="false" selected="true" text="Luna" />
+            <Button fx:id="bt_select" layoutX="138.0" layoutY="89.0" mnemonicParsing="false" onAction="#notifySelected" text="Select it" />
+            <Button layoutX="148.0" layoutY="175.0" mnemonicParsing="false" onAction="#switchToPrimary" text="返回主界面" />
+         </children>
+      </AnchorPane>
+      <ChoiceBox accessibleText="what is your age?" layoutX="117.0" layoutY="128.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="cb_food" accessibleText="“Apple&quot;&#10;" layoutX="24.0" layoutY="200.0" prefWidth="150.0" value="Apple">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="2 minutes" />
+               <String fx:value="5 minutes" />
+               <String fx:value="15 minutes" />
+               <String fx:value="Apple"/>
+               <String fx:value="Banana"/>
+            </FXCollections>
+         </items>
+      </ChoiceBox>
+      <Label layoutX="31.0" layoutY="174.0" text="Choices Button" />
+      <Button layoutX="24.0" layoutY="243.0" mnemonicParsing="false" onAction="#message" text="选择了什么?" />
+   </children>
+</AnchorPane>

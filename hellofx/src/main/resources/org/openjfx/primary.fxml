@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" prefHeight="709.0" prefWidth="911.0" spacing="20.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.PrimaryController">
+   <children>
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#switchToCombobox" text="打开combobox" />
+            <Button mnemonicParsing="false" onAction="#switchToChoicesButton" text="打开choicesButton" />
+         </children>
+      </HBox>
+      <Label text="Primary View" />
+      <Button fx:id="primaryButton" onAction="#switchToSecondary" text="切换到第二视角" />
+      <Button fx:id="oWarning" mnemonicParsing="false" onAction="#switchToWarning" text="打开警告框序列" />
+      <Button mnemonicParsing="false" onAction="#switchToExtractInfo" text="打开ExtractInfo" />
+      <Button mnemonicParsing="false" onAction="#switchToLongin" text="打开Longin" />
+      <Button mnemonicParsing="false" onAction="#switchToSystemTrap" text="打开SystemTrap" />
+      <HBox prefHeight="35.0" prefWidth="871.0" spacing="10.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#switchToJAVAFXCollections" text="JAVAFXCollections测试" />
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchToBindTheory" text="绑定测试" />
+         </children>
+      </HBox>
+      <HBox prefHeight="44.0" prefWidth="871.0" spacing="10.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#switchToListview" text="打开Listview" />
+            <Button mnemonicParsing="false" onAction="#switchToTreeView" text="打开TreeView" />
+            <Button mnemonicParsing="false" onAction="#switchToPersonalOverview" text="打开PersonalOverview">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#switchToTableView" text="打开TableView" />
+            <Button layoutX="367.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchToWebView" text="打开WebView" />
+            <Button mnemonicParsing="false" onAction="#switchToMFListView" text="SwitchMFXListView" />
+         </children>
+         <opaqueInsets>
+            <Insets right="10.0" />
+         </opaqueInsets>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#switchToImageViewerWithBlur" text="打开ImageViewerWithBlur" />
+            <Button mnemonicParsing="false" onAction="#switchToImageView" text="打开ImageView" />
+            <Button mnemonicParsing="false" onAction="#switchToMFbutton" text="SwitchMFXButton" />
+            <Button mnemonicParsing="false" onAction="#switchToMFTableView" text="SwitchMFXTableView" />
+            <Button mnemonicParsing="false" onAction="#switchToMFTreeView" text="SwitchMFXTreeView" />
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</VBox>
