@@ -3,9 +3,9 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.data.Mapper.UserMapper">
-    <select id="selectUserById" resultType="org.data.Entity2.User">
-    select * from user where uid = #{uid}
-  </select>
+<!--    <select id="selectUserById" resultType="org.data.Entity2.User">-->
+<!--    select * from user where uid = #{uid}-->
+<!--  </select>-->
 
     <select id="selectById" resultType="org.data.Entity2.User">
     select * from user where uid = #{uid}

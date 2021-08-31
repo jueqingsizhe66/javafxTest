@@ -5,6 +5,9 @@ import javafx.beans.property.*;
 import java.time.LocalDate;
 
 public class Person {
+    /**
+     * Property 各种图形控件都具有Property结尾的矩阵变化方法！
+     */
     private final StringProperty firstName;
     private final StringProperty lastName;
     private final StringProperty street;

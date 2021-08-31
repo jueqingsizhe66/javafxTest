@@ -56,6 +56,11 @@ public class App extends Application {
 
     private static Scene scene;
 
+    /**
+     * stage就是一个窗口类！！
+     * @param stage
+     * @throws IOException
+     */
     @Override
     public void start(Stage stage) throws IOException {
         System.out.println("start stage "+  Thread.currentThread().getName());
@@ -67,6 +72,12 @@ public class App extends Application {
         //https://stackoverflow.com/questions/29405658/using-fxid-as-css-id-in-fxml
         //stage.getScene().getStylesheets().add("/foo.css");
         stage.setScene(scene);
+//        stage.setWidth(400);
+//        stage.setHeight(200);
+//        stage.setResizable(true);
+//        stage.setMaximized(true);
+//        stage.setFullScreen(true); // 必须设置scene！ scene就是桌子上的桌布，桌布上面可以摆上锅碗瓢盆
+//        stage.setOpacity(0.5);// 半透明
 
         stage.xProperty().addListener(new ChangeListener<Number>() {
             @Override
@@ -97,6 +108,7 @@ public class App extends Application {
     }
 
     static void setRoot(String fxml) throws IOException {
+        // 不断地切换桌布的过程！ 一个桌布包含一个布局   一个玻璃纸包含一个布局  每一个桌布都是一张玻璃纸 看似没有 实则有！
         scene.setRoot(loadFXML(fxml));
     }
 
@@ -116,7 +128,7 @@ public class App extends Application {
 //        Application.launch(Launch.class,args);
 
         // 写法4 最简单，什么也不添加！
-        launch();
+        launch(args);
 //        Application.launch(Launch.class,args); //最全面的写法，可以分离开main和Launch类，当前写法是集成在一起
         // 所以Javafx的起始点是Application类 https://www.bilibili.com/video/BV1nW411r7sW
     }

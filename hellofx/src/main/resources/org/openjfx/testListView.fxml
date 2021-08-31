@@ -5,7 +5,6 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.effect.BoxBlur?>
 <?import javafx.scene.layout.AnchorPane?>
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ListViewController">
    <children>
       <ListView fx:id="lv_stu" editable="true" layoutX="123.0" layoutY="62.0" prefHeight="200.0" prefWidth="200.0">

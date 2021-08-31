@@ -3,6 +3,15 @@ package org.data.Entity;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+/**
+ * 自身具备监听和非监听两种能力
+ * 1. 需要具备监听则使用nameProperty().bind()...
+ * 2. 不需要监听则按照正常类进行name set get即可！
+ *
+ * 进一步分析 当调用nameProperty() 会创建SimpleStringProperty 这样就有了namePro
+ * 2021-08-31 0:06   终于知道了各个控件调用  ***Property().函数的作！
+ * 也就是调用nameProperty().addListener()...
+ */
 public class SimplePerson {
     /**
      * 单例模式
@@ -18,6 +27,10 @@ public class SimplePerson {
         }
     }
 
+    /**
+     * 当你需要监听的时候
+     * @return
+     */
     public StringProperty nameProperty(){
         /**
          * 只在第一次创建

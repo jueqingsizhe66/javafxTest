@@ -118,7 +118,7 @@ public class BindTheoryTestController implements Initializable {
             Label l1 = new Label();
 //            MFXLabel l1 = new MFXLabel();
             l1.setText("SS"+i);
-            ObjectBinding obj = listlable.valueAt(i);
+            ObjectBinding obj = listlable.valueAt(i); // OB组合
             l1.textProperty().bind(obj); // 绑定的过程
             vb_label.getChildren().add(l1);
         }

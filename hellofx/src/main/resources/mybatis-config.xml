@@ -45,6 +45,6 @@
 	</environments>
 	<mappers>
 <!--        <mapper resource="org/openjfx/UserMapper.xml"></mapper>-->
-        <mapper resource="org/openjfx/mapper/UserMapper.xml"></mapper>
+        <mapper resource="UserMapper.xml"></mapper>
 	</mappers>
 </configuration>
