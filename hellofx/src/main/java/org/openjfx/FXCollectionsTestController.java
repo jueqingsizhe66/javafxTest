@@ -301,7 +301,6 @@ public class FXCollectionsTestController implements Initializable {
 
                 // 特别的地方 因为继承了Set集合
                 // https://docs.oracle.com/en/java/javase/12/docs/api/java.base/java/util/Set.html?is-external=true#addAll(java.util.Collection)
-
                 Iterator<String> it = ssp.iterator();
                 while (it.hasNext()) {
                     System.out.println("Iterator shows : "+ it.next());

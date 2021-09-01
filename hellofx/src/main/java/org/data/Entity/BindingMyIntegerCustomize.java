@@ -20,6 +20,7 @@ public class BindingMyIntegerCustomize extends IntegerBinding {
         sip.set(num);
     }
 
+
     @Override
     protected int computeValue() {
         // 可以自定义各种计算， 在bindings工具类提供了很多加 减 乘除 但没有计算面积等

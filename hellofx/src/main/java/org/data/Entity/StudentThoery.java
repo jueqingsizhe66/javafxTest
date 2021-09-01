@@ -34,6 +34,8 @@ public class StudentThoery {
     // Simple*Property类的一个共同特点是可以设置监听器，具有监听功能，也就是一出生就具备观察者模式！
     // 用起来你才知道知识的用途！
 
+    // 格局小了，得想想这个知识点背后产生的逻辑，他的思路，他的运思过程，他为什么这么表示，是不是还有其他表示方法？
+    // 要把他的整个链条联系好！
     public PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
     public StudentThoery(String name, int age) {

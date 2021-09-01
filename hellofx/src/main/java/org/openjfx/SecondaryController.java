@@ -50,6 +50,12 @@ public class SecondaryController implements Initializable {
     @FXML
     private PasswordField pf_password;
 
+
+    /**
+     * 在initiate()函数完成初始化工作！
+     */
+    InputStream inputStream ;
+    SqlSessionFactory sqlSessionFactory;
     @FXML
     private void switchToPrimary() throws IOException {
         App.setRoot("primary");
@@ -101,6 +107,14 @@ public class SecondaryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        try {
+            inputStream = Resources.getResourceAsStream("mybatis-config.xml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
         StudentDaoImpl sdi = new StudentDaoImpl();
         List<Student> rows = sdi.getAllStudent();
         lv_stu.getItems().addAll(rows);
@@ -115,6 +129,9 @@ public class SecondaryController implements Initializable {
                 System.out.println(data);
             }
         });
+        /**
+         * ListChangeListener 监听list的CRUD行为
+         */
         lst_obj.addListener(new ListChangeListener<Student>() {
             @Override
             public void onChanged(Change<? extends Student> change) {
@@ -162,6 +179,7 @@ public class SecondaryController implements Initializable {
         stu.setSaddress("平光");
         lv_stu.getItems().add(stu);
     }
+    //remove(from,to)
     @FXML
     public void removeObjectFromList(){
         lv_stu.getItems().remove(0);
@@ -185,11 +203,10 @@ public class SecondaryController implements Initializable {
         try {
 
 //            String resource = "mybatis-config.xml";
-            InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
-            System.out.println("ok1");
-            SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-            System.out.println("ok2");
-
+//            InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
+//            System.out.println("ok1");
+//            SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+//            System.out.println("ok2");
 
             try(SqlSession session = sqlSessionFactory.openSession()) {
                 //方式2
@@ -217,10 +234,8 @@ public class SecondaryController implements Initializable {
         try {
 
 //            String resource = "mybatis-config.xml";
-            InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
-            SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-
-
+//            InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
+//            SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
             try(SqlSession session = sqlSessionFactory.openSession()) {
                 //方式2
                 UserMapper mapper = session.getMapper(UserMapper.class);
