@@ -123,6 +123,13 @@ public class BindTheoryTestController implements Initializable {
             vb_label.getChildren().add(l1);
         }
         tf_content.textProperty().addListener(new ChangeListener<String>() {
+            /**
+             * 1. 空的时候不动作
+             * 2. 布控的时候执行动作
+             * @param observableValue
+             * @param s
+             * @param t1
+             */
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 if (tf_row.getText().equals("")) {
@@ -222,6 +229,9 @@ public class BindTheoryTestController implements Initializable {
         System.out.println("----------------------------------");
     }
 
+    /**
+     * 嵌套监听   基础变量替换为带监听的引用变量！
+     */
     @FXML
     public void simplePropertyObjectBindingMapTest(){
 

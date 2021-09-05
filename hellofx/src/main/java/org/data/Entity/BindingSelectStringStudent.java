@@ -15,6 +15,11 @@ public class BindingSelectStringStudent {
 //        this.sop.set(this.name);
     }
     //构造函数
+
+    /**
+     * 为什么那么麻烦 ，不明白！
+     * @param name
+     */
     public BindingSelectStringStudent(String name){
         this.name.setName(name);
         this.sop.set(this.name);

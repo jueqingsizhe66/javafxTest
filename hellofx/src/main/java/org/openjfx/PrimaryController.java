@@ -1,8 +1,15 @@
 package org.openjfx;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
 public class PrimaryController  {
 
@@ -37,8 +44,33 @@ public class PrimaryController  {
     }
 
     @FXML
-    private void switchToMFbutton() throws IOException {
+    private void switchToMFbutton() throws IOException, ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
 //        App.setRoot("materialsFX/ButtonsDemo");
+        Node n1 = new Button("Hello");
+        String name = n1.getClass().getName();
+        System.out.println(name);
+
+        Class<?> classtype= Class.forName(name);
+        Node n2 = (Node) classtype.getConstructor(null).newInstance(null);
+//
+        Button n3 = new Button("回到主页");
+        n3.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    App.setRoot("primary");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        AnchorPane an =new AnchorPane();
+        HBox h1 = new HBox();
+        h1.getChildren().addAll(n1, n2,n3);
+//        h1.getChildren().addAll(n1);
+        an.getChildren().add(h1);
+        App.setRootAn(an);
     }
 
     @FXML

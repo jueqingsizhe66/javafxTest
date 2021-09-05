@@ -28,7 +28,8 @@ public class SimplePerson {
     }
 
     /**
-     * 当你需要监听的时候
+     * 当你需要监听的时候 即调用 对象.nameProperty().getName
+     *  基本上大多数控件都有对应属性的Property()函数
      * @return
      */
     public StringProperty nameProperty(){

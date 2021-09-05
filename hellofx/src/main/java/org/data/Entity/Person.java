@@ -7,6 +7,10 @@ import java.time.LocalDate;
 public class Person {
     /**
      * Property 各种图形控件都具有Property结尾的矩阵变化方法！
+     * ListProperty
+     * SetProperty
+     * MapProperty
+     *
      */
     private final StringProperty firstName;
     private final StringProperty lastName;

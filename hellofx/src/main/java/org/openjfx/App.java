@@ -10,6 +10,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -107,6 +108,10 @@ public class App extends Application {
         stage.show();
     }
 
+    static void setRootAn(AnchorPane an) throws IOException {
+        // 不断地切换桌布的过程！ 一个桌布包含一个布局   一个玻璃纸包含一个布局  每一个桌布都是一张玻璃纸 看似没有 实则有！
+        scene.setRoot(an);
+    }
     static void setRoot(String fxml) throws IOException {
         // 不断地切换桌布的过程！ 一个桌布包含一个布局   一个玻璃纸包含一个布局  每一个桌布都是一张玻璃纸 看似没有 实则有！
         scene.setRoot(loadFXML(fxml));
