@@ -43,6 +43,7 @@
          <children>
             <Button mnemonicParsing="false" onAction="#switchToJAVAFXCollections" prefHeight="23.0" prefWidth="217.0" text="JAVAFXCollections测试" />
             <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchToBindTheory" prefHeight="23.0" prefWidth="140.0" text="绑定测试" />
+            <Button layoutX="257.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchToTreeTableView" prefHeight="23.0" prefWidth="140.0" text="打开TreeTableView" />
          </children>
          <padding>
             <Insets left="20.0" />

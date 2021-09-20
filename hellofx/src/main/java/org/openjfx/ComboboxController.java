@@ -1,12 +1,18 @@
 package org.openjfx;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.util.Callback;
+import javafx.util.StringConverter;
+import org.data.Entity.Student;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,6 +32,13 @@ public class ComboboxController implements Initializable {
     private TextField tf_subject;
     @FXML
     private TextArea ta_body;
+
+    @FXML
+    private Button bt_modified;
+    @FXML
+    private ComboBox<Student> bt_stu;
+
+    private int index;
 
     @FXML
     private void switchToPrimary() throws IOException {
@@ -53,6 +66,11 @@ public class ComboboxController implements Initializable {
                 "emma.jones@example.com",
                 "michael.brown@example.com"
         );
+        cb_email.setPromptText("请输入邮箱");
+        /**
+         * 出现一个下拉框
+         */
+        cb_email.setVisibleRowCount(4);
         // 可编辑 也可以在界面上设置
         cb_priority.setEditable(true);
 
@@ -63,6 +81,7 @@ public class ComboboxController implements Initializable {
                 "Low",
                 "Lowest"
         );
+        cb_priority.setVisibleRowCount(3);
 
         cb_priority.setValue("Normal");
         cb_priority.setCellFactory(
@@ -95,6 +114,54 @@ public class ComboboxController implements Initializable {
                         return cell;
                     }
                 });
+
+        Student s1 = new Student("zh","299",10,"15101077342","回龙观");
+        Student s2 = new Student("zh2","299",10,"15101077342","回龙观");
+        Student s3 = new Student("zh3","299",10,"15101077342","回龙观");
+        Student s4 = new Student("zh4","299",10,"15101077342","回龙观");
+        Student s5 = new Student("zh5","299",10,"15101077342","回龙观");
+
+        //bt_stu = new ComboBox<Student>();
+        bt_stu.setPrefWidth(200);
+        bt_stu.getItems().addAll(s1,s2,s3,s4,s5);
+        bt_stu.setConverter(new StringConverter<Student>() {
+            @Override
+            public String toString(Student object) {
+                if (object==null) {
+                    return "Please Select option"; /*为空时候进行判断  少不了the little scheme*/
+                }
+                String value = object.getSname()+" - " + object.getSage()+" - "+object.getSphone();
+                return value;
+            }
+
+            @Override
+            public Student fromString(String string) {
+                return null;
+            }
+        });
+        bt_stu.setVisibleRowCount(3);
+
+        bt_stu.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                index= newValue.intValue();
+                System.out.println(" your new value is "+index);
+            }
+        });
+
+        bt_modified.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                int temp =index;
+//                System.out.println(bt_stu.getItems().get(index).getSname());
+//                System.out.println("Current Index is "+ index);
+                bt_stu.getItems().get(temp).setSname("修改的人民");
+                bt_stu.getSelectionModel().clearSelection(); /*index 发生改变 变为-1. 所以需要加上temp*/
+                bt_stu.getSelectionModel().select(temp);
+                System.out.println(bt_stu.getItems().get(index).getSname());
+            }
+        });
 
     }
 

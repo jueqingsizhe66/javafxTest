@@ -108,6 +108,10 @@ public class testDynamicDrawing implements Initializable {
 
            }
        });
+        /**
+         * 冒泡EventHandler
+         *
+         */
        bt_run.setOnAction(new EventHandler<ActionEvent>() {
            @Override
            public void handle(ActionEvent event) {
@@ -162,6 +166,10 @@ public class testDynamicDrawing implements Initializable {
         AnchorPane.setLeftAnchor(chart, 20.0);
     }
 }
+
+/**
+ * 产生一定数据结构的task
+ */
 class DataTask extends ScheduledService<ArrayList<Integer>> {
 
     @Override

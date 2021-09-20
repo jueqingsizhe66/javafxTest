@@ -331,5 +331,11 @@ public class PrimaryController  {
         App.setRoot("bindTheoryTest");
 
     }
+
+    @FXML
+    private void switchToTreeTableView() throws IOException {
+        App.setRoot("treeTableView");
+
+    }
 }
 

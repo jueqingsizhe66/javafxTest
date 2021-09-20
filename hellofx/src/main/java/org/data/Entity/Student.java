@@ -76,6 +76,5 @@ public class Student
     public void setSaddress(String saddress) {
         this.saddress = saddress;
     }
-    
-    
+
 }
