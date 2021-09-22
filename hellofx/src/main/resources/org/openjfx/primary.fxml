@@ -39,11 +39,10 @@
             <Insets left="10.0" top="20.0" />
          </padding>
       </HBox>
-      <HBox layoutX="9.0" layoutY="545.0" prefHeight="35.0" prefWidth="871.0" spacing="10.0">
+      <HBox layoutX="9.0" layoutY="494.0" prefHeight="45.0" prefWidth="967.0" spacing="10.0">
          <children>
             <Button mnemonicParsing="false" onAction="#switchToJAVAFXCollections" prefHeight="23.0" prefWidth="217.0" text="JAVAFXCollections测试" />
             <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchToBindTheory" prefHeight="23.0" prefWidth="140.0" text="绑定测试" />
-            <Button layoutX="257.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchToTreeTableView" prefHeight="23.0" prefWidth="140.0" text="打开TreeTableView" />
          </children>
          <padding>
             <Insets left="20.0" />
@@ -51,12 +50,6 @@
       </HBox>
       <HBox layoutX="17.0" layoutY="617.0" prefHeight="44.0" prefWidth="989.0" spacing="20.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#switchToListview" prefHeight="23.0" prefWidth="181.0" text="打开Listview">
-               <HBox.margin>
-                  <Insets left="20.0" />
-               </HBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#switchToTreeView" prefHeight="23.0" prefWidth="193.0" text="打开TreeView" />
             <Button mnemonicParsing="false" onAction="#switchToPersonalOverview" prefHeight="23.0" prefWidth="229.0" text="打开PersonalOverview">
                <HBox.margin>
                   <Insets right="5.0" />
@@ -64,6 +57,7 @@
             </Button>
             <Button mnemonicParsing="false" onAction="#switchToTableView" prefHeight="23.0" prefWidth="167.0" text="打开TableView" />
             <Button layoutX="367.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchToWebView" prefHeight="23.0" prefWidth="145.0" text="打开WebView" />
+            <Button mnemonicParsing="false" onAction="#switchToTreeTableView" prefHeight="23.0" prefWidth="199.0" text="打开TreeTableView" />
          </children>
          <opaqueInsets>
             <Insets right="10.0" />
@@ -102,6 +96,17 @@
           </Menu>
         </menus>
       </MenuBar>
+      <HBox layoutX="317.0" layoutY="363.0" prefHeight="45.0" prefWidth="786.0" spacing="10.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#switchToListview" prefHeight="23.0" prefWidth="181.0" text="打开Listview" />
+            <Button mnemonicParsing="false" onAction="#switchToListViewSSP" prefHeight="23.0" prefWidth="193.0" text="打开ListViewSSP" />
+            <Button layoutX="616.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchToListViewJavaBean" prefHeight="23.0" prefWidth="193.0" text="打开ListViewJavaBean" />
+            <Button layoutX="424.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchToListViewJavaBeanSSP" prefHeight="23.0" prefWidth="250.0" text="打开ListViewJavaBeanSSP" />
+         </children>
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+      </HBox>
    </children>
    <effect>
       <Blend />

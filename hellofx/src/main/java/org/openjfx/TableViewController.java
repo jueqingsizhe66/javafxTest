@@ -1,17 +1,23 @@
 package org.openjfx;
 
+import javafx.beans.Observable;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.Callable;
 
 public class TableViewController implements Initializable {
 //http://www.voidcn.com/article/p-sdorvxpk-oh.html
@@ -35,31 +41,62 @@ public class TableViewController implements Initializable {
     private TextField tf_quantity;
 
     @FXML
+    private Button tv_name;
+
+    @FXML
     private void switchToPrimary() throws IOException {
         App.setRoot("primary");
     }
 
+    @FXML
+    private void clickTVButton(){
+
+        if (!tv_product.getSelectionModel().isEmpty()) {
+            tv_product.getSelectionModel().getSelectedItem().setName("h3");
+//            tv_product.getItems().add(new Product("hl",34.2,39));
+            tv_product.refresh();
+        }
+
+    }
     //Get all of the products
     public ObservableList<Product> getProduct(){
-        ObservableList<Product> products = FXCollections.observableArrayList();
+//        ObservableList<Product> products = FXCollections.observableArrayList();
+        ObservableList<Product> products = FXCollections.observableArrayList(new Callback<Product, Observable[]>() {
+            @Override
+            public Observable[] call(Product param) {
+                SimpleStringProperty[] arr = new SimpleStringProperty[]{new SimpleStringProperty(param.getName())};
+                return arr;
+            }
+        });
+        SimpleStringProperty ht = new SimpleStringProperty("3");
         products.add(new Product("Laptop", 859.00, 20));
         products.add(new Product("Bouncy Ball", 2.49, 198));
         products.add(new Product("Toilet", 99.00, 74));
         products.add(new Product("The Notebook DVD", 19.99, 12));
         products.add(new Product("Corn", 1.49, 856));
+
+        products.addListener(new ListChangeListener<Product>() {
+            @Override
+            public void onChanged(Change<? extends Product> c) {
+                while (c.next()) {
+                    System.out.println("change");
+                }
+            }
+        });
         return products;
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        ttc_name.setMinWidth(50);
+        tv_product.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        ttc_name.setMinWidth(70);
         ttc_name.setCellValueFactory(new PropertyValueFactory<>("name"));
 
-        ttc_price.setMinWidth(30);
+        ttc_price.setMinWidth(70);
         ttc_price.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-        ttc_quantity.setMinWidth(30);
+        ttc_quantity.setMinWidth(70);
         ttc_quantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 
         tv_product.setItems(getProduct());

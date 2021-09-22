@@ -214,6 +214,7 @@ public class FXCollectionsTestController implements Initializable {
 
         /**
          * list 测试初始化
+         * 其实
          */
         list = FXCollections.observableArrayList("Aa","Bb","Cc");
         list.add("Dd");

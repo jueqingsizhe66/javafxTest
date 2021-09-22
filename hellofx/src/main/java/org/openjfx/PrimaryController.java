@@ -337,5 +337,23 @@ public class PrimaryController  {
         App.setRoot("treeTableView");
 
     }
+
+    @FXML
+    private void switchToListViewSSP() throws IOException {
+        App.setRoot("testListViewSSP");
+
+    }
+
+    @FXML
+    private void switchToListViewJavaBean() throws IOException {
+        App.setRoot("testListViewSSPJavaBean");
+
+    }
+
+    @FXML
+    private void switchToListViewJavaBeanSSP() throws IOException {
+        App.setRoot("testListViewSSPJavaBeanSSP");
+
+    }
 }
 
