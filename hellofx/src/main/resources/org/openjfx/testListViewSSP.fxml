@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="456.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ListViewControllerSSP">
    <children>
-      <ListView fx:id="lv_stu" editable="true" layoutX="123.0" layoutY="62.0" prefHeight="200.0" prefWidth="200.0" />
+      <ListView fx:id="lv_stu" editable="true" layoutX="100.0" layoutY="62.0" prefHeight="200.0" prefWidth="341.0" />
       <Button layoutX="471.0" layoutY="210.0" mnemonicParsing="false" onAction="#switchToPrimary" text="返回主界面" />
       <Button layoutX="123.0" layoutY="281.0" mnemonicParsing="false" onAction="#showMovieList" text="showSelectedMovies" />
       <Label layoutX="123.0" layoutY="40.0" text="Movie List:" />

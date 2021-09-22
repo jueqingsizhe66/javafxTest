@@ -4,11 +4,19 @@ import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
+import javafx.geometry.Pos;
+import javafx.scene.chart.PieChart;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldListCell;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 
@@ -80,6 +88,15 @@ public class ListViewControllerJavaBean implements Initializable {
         lv_stu.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         lv_stu.setEditable(true);
 
+        /**
+         * 设置ListView风格
+         * LIstView，自定义选项样式，自定义可编辑状态的样式
+         * https://www.bilibili.com/video/BV1Kb411C7kR
+         */
+        /**
+         * 如果不设置setCellFactory默认打印list对象出来
+         */
+        /**
         lv_stu.setCellFactory(TextFieldListCell.forListView(new StringConverter<DataP>() {
 
             @Override
@@ -93,6 +110,163 @@ public class ListViewControllerJavaBean implements Initializable {
                 return null;
             }
         }));
+        */
+
+        /**
+         * 自定义风格
+         */
+        lv_stu.setCellFactory(new Callback<ListView<DataP>, ListCell<DataP>>() {
+
+            /**
+             * 不能放在call函数内部， 而应该放在Callback函数体内！
+             * call执行真正过程动作
+             */
+            int index=0;
+            DataP temp =null; /*方便setOnEditStart 和startEdit配合使用*/
+            ListCell<DataP> cell =null; /*为了可以在starEdit中使用*/
+            @Override
+            public ListCell<DataP> call(ListView<DataP> param) {
+                param.setOnEditStart(new EventHandler<ListView.EditEvent<DataP>>() {
+                    @Override
+                    public void handle(ListView.EditEvent<DataP> event) {
+                        index = event.getIndex();
+                        temp =param.getItems().get(index);
+                    }
+                });
+                ListCell<DataP> listCell = new ListCell<DataP>(){
+
+                    /**
+                     * 为了让startEdit获取当前选择的对象，增加start
+                     */
+                    @Override
+                    public void startEdit() {
+                        cell = this; /*无法直接使用listCell 只能间接cell = this 类似this.setGraphics*/
+                        super.startEdit();
+                        HBox hbox = new HBox();
+                        hbox.setAlignment(Pos.CENTER_LEFT);
+                        ImageView iv = new ImageView(new Image(App.class.getResourceAsStream("avatar.jpg")));
+                        iv.setPreserveRatio(true);
+                        iv.setFitHeight(30);
+
+                        Button bu = new Button(temp.getName() + "button");
+                        TextField tb_name = new TextField(temp.getName());
+                        TextField tb_age = new TextField(temp.getAge());
+                        tb_name.setPrefWidth(100);
+                        tb_age.setPrefWidth(100);
+                        hbox.getChildren().addAll(iv, bu, tb_name, tb_age);
+                        this.setGraphic(hbox);
+                        tb_name.setOnKeyPressed(new EventHandler<KeyEvent>() {
+                            @Override
+                            public void handle(KeyEvent event) {
+                                if(event.getCode().getName().equals(KeyCode.ENTER.getName())){
+                                    if (tb_name.getText().equals("")) {
+                                        /*无法直接使用this*/
+                                        cell.commitEdit(temp);
+                                    }else{
+                                        temp.setName(tb_name.getText());
+                                        temp.setAge(tb_age.getText());
+                                        cell.commitEdit(temp);
+                                    }
+
+                                }
+
+                            }
+                        });
+
+                        tb_age.setOnKeyPressed(new EventHandler<KeyEvent>() {
+                            @Override
+                            public void handle(KeyEvent event) {
+                                if(event.getCode().getName().equals(KeyCode.ENTER.getName())){
+                                    if (tb_age.getText().equals("")) {
+                                        /*无法直接使用this*/
+                                        cell.commitEdit(temp);
+                                    }else{
+                                        temp.setName(tb_name.getText());
+                                        temp.setAge(tb_age.getText());
+                                        cell.commitEdit(temp);
+                                    }
+
+                                }
+
+                            }
+                        });
+                    }
+
+                    /**
+                     * 如果取消编辑？
+                     * 重载canCleEdit即可
+                     */
+                    @Override
+                    public void cancelEdit() {
+                        super.cancelEdit();
+
+                        HBox hbox = new HBox();
+                        hbox.setAlignment(Pos.CENTER_LEFT);
+                        ImageView iv = new ImageView(new Image(App.class.getResourceAsStream("avatar.jpg")));
+                        iv.setPreserveRatio(true);
+                        iv.setFitHeight(30);
+
+                        Button bu = new Button(temp.getName() + "button");
+                        Label tb_name = new Label(temp.getName()+"can");
+                        Label tb_age = new Label(temp.getAge()+"can");
+                        tb_name.setPrefWidth(100);
+                        tb_age.setPrefWidth(100);
+                        hbox.getChildren().addAll(iv, bu, tb_name, tb_age);
+                        bu.setOnAction(new EventHandler<ActionEvent>() {
+                            @Override
+                            public void handle(ActionEvent event) {
+                                System.out.println(temp.getName() + "------------"+ temp.getAge());
+                            }
+                        });
+                        this.setGraphic(hbox);
+                    }
+
+                    /**
+                     * 如果提交编辑？
+                     * @param newValue
+                     */
+                    @Override
+                    public void commitEdit(DataP newValue) {
+                        super.commitEdit(newValue);
+                        System.out.println("提交编辑");
+                    }
+
+                    /**
+                     * Alt+insert   调出Override方法窗口
+                     * @param item
+                     * @param empty
+                     */
+                    @Override
+                    protected void updateItem(DataP item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty == false) {
+                            HBox hbox =new HBox();
+                            hbox.setAlignment(Pos.CENTER_LEFT);
+                            ImageView iv = new ImageView(new Image(App.class.getResourceAsStream("avatar.jpg")));
+                            iv.setPreserveRatio(true);
+                            iv.setFitHeight(30);
+
+                            Button bu = new Button(item.getName() + "button");
+                            Label lb = new Label(item.getName());
+                            Label age = new Label(item.getAge());
+                            hbox.getChildren().addAll(iv,bu,lb,age);
+                            bu.setOnAction(new EventHandler<ActionEvent>() {
+                                @Override
+                                public void handle(ActionEvent event) {
+                                    System.out.println(item.getName() + "------------"+ item.getAge());
+                                }
+                            });
+                            this.setGraphic(hbox);
+
+//                            this.setGraphic(new Label(item.getName()+ "*****"+item.getAge()));
+
+                        }
+                    }
+                };
+                return listCell;
+            }
+        });
+
         /**
          * oblist可配置监听器  观察内容发生改变
          */

@@ -165,7 +165,6 @@ public class TreeTableViewController implements Initializable {
 //        name_column.setCellFactory(ChoiceBoxTreeTableCell.forTreeTableColumn("A","YX","DF"));
         name_column.setCellFactory(ComboBoxTreeTableCell.forTreeTableColumn("A","YX","DF"));
         /*以上为TreeView设置*/
-
         /**
          * 有意思 把所有的true 和false 转变为Checkbox写法
          */
