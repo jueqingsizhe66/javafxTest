@@ -2,12 +2,14 @@ package org.openjfx;
 
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.cell.TextFieldListCell;
@@ -32,6 +34,9 @@ public class ListViewControllerSSPJavaBeanSSP implements Initializable {
 
     @FXML
     private ListView lv_stu;
+
+    @FXML
+    private Label lb_enter;
     private DataSSP s1 ;
     private DataSSP s2 ;
     private DataSSP s3 ;
@@ -90,7 +95,7 @@ public class ListViewControllerSSPJavaBeanSSP implements Initializable {
 //                "Piano",
 //                "Pie",
 //                "小丑");
-        lv_stu.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+//        lv_stu.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         lv_stu.setEditable(true);
 
         lv_stu.setCellFactory(TextFieldListCell.forListView(new StringConverter<DataSSP>() {
@@ -154,6 +159,28 @@ public class ListViewControllerSSPJavaBeanSSP implements Initializable {
                 });
             }
         });
+
+//        System.out.println(lv_stu.getSelectionModel().getSelectedItems());
+        lb_enter.textProperty().bind(
+                Bindings.createStringBinding(
+                        ()->{
+                            if (!lv_stu.getSelectionModel().getSelectedItems().isEmpty()) {
+                                return "hello"+oblist.get(lv_stu.getSelectionModel().getSelectedIndex()).getName();
+                            }else{
+                                return "no selected";
+                            }
+                        },lv_stu.getSelectionModel().selectedItemProperty()));
+
+        /**
+         * https://stackoverflow.com/questions/38543273/javafx-bindings-createstringbinding-but-binding-not-actually-work
+         * 必须得告诉Bindings要观察哪个发生变化
+         * You need to "tell" Bindings, which Observables to observe for changes.
+         * This varargs parameter is the second parameter of the createStringBinding
+         * method.
+         * In this case you need to pass only a single Observable: object.numberProperty()
+         */
+//        lb_enter.textProperty().bind(
+//                Bindings.createStringBinding(()->"hello"+lv_stu.getSelectionModel().selectedItemProperty()));
 
     }
 
@@ -265,6 +292,14 @@ class DataSSP{
 
     public void setAge(String age) {
         this.age.set(age);
+    }
+
+    @Override
+    public String toString() {
+        return "DataSSP{" +
+                "name=" + name +
+                ", age=" + age +
+                '}';
     }
 }
 
