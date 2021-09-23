@@ -10,13 +10,16 @@ import javafx.beans.property.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.util.Callback;
 import org.data.Entity.BindingMyIntegerCustomize;
 import org.data.Entity.BindingSelectStringStudent;
 import org.data.Entity.StudentThoery;
@@ -57,6 +60,9 @@ public class BindTheoryTestController implements Initializable {
 
     @FXML
     private VBox vb_label;
+
+    @FXML
+    private Button bt_sourceBi;
 
     private StudentThoery stu;
 
@@ -448,4 +454,65 @@ public class BindTheoryTestController implements Initializable {
         System.out.println("new value of only is "+ only.get());
 
     }
+
+    @FXML
+    public void testDoubleDataSource() {
+        SimpleStringProperty a = new SimpleStringProperty("a");
+        SimpleStringProperty b = new SimpleStringProperty("b");
+
+        ObservableList<SimpleStringProperty> list= FXCollections.observableArrayList(new Callback<SimpleStringProperty, Observable[]>()
+        {
+            @Override
+            public Observable[] call(SimpleStringProperty param) {
+
+                System.out.println("call1: "+ param);
+                SimpleStringProperty[] arr = new SimpleStringProperty[]{param};
+                return arr;
+            }
+        });
+
+        list.addListener(new ListChangeListener<SimpleStringProperty>() {
+            @Override
+            public void onChanged(Change<? extends SimpleStringProperty> c) {
+                while (c.next()) {
+                    System.out.println("onChange1: "+ c + "was updated: "+c.wasUpdated());
+                }
+            }
+        });
+
+        /**
+         * ObservableList和ObservableArrayList的区别，
+         * observableList需要包含一个ObservableList<T>方法</T>
+         * ObservableArrayList只有一个Callback字段即可
+         *
+         * 结论list源头的添加，不会触发list2包装类的同志
+         * list2的添加，会触发list的通知(list相当于总线， list2只是分部， 分部的变化不一定会反馈的总部list，但是list总部的变化肯定
+         * list2的更新变化需要反馈到list， 但是list的变化，不需要通知到list2，他没权知道！也不需要下放给他！
+         */
+        ObservableList<SimpleStringProperty> list2=  FXCollections.observableList(list,new Callback<SimpleStringProperty, Observable[]>()
+        {
+            @Override
+            public Observable[] call(SimpleStringProperty param) {
+
+                System.out.println("call2: "+ param);
+                SimpleStringProperty[] arr = new SimpleStringProperty[]{param};
+                return arr;
+            }
+        });
+
+        list2.addListener(new ListChangeListener<SimpleStringProperty>() {
+            @Override
+            public void onChanged(Change<? extends SimpleStringProperty> c) {
+                while (c.next()) {
+                    System.out.println("onChange2: "+ c + "was updated: "+c.wasUpdated());
+                }
+            }
+        });
+
+        list.add(a);
+        list2.add(b);
+        b.set("anna");
+        a.set("banana");
+    }
 }
+
