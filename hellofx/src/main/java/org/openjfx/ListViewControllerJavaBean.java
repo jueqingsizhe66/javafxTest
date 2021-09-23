@@ -120,12 +120,17 @@ public class ListViewControllerJavaBean implements Initializable {
             /**
              * 不能放在call函数内部， 而应该放在Callback函数体内！
              * call执行真正过程动作
+             * listview公共变量
              */
             int index=0;
             DataP temp =null; /*方便setOnEditStart 和startEdit配合使用*/
             ListCell<DataP> cell =null; /*为了可以在starEdit中使用*/
             @Override
             public ListCell<DataP> call(ListView<DataP> param) {
+                /**
+                 * 每一次执行startEdit都会执行该动作，获取当前选择的索引,不断修改temp值
+                 * 加载当前选项项
+                 */
                 param.setOnEditStart(new EventHandler<ListView.EditEvent<DataP>>() {
                     @Override
                     public void handle(ListView.EditEvent<DataP> event) {
@@ -133,8 +138,30 @@ public class ListViewControllerJavaBean implements Initializable {
                         temp =param.getItems().get(index);
                     }
                 });
+
+                /**
+                 * 资源可以共用
+                 * 加载资源
+                 */
+                ImageView iv = new ImageView(new Image(App.class.getResourceAsStream("avatar.jpg")));
+                iv.setPreserveRatio(true);
+                iv.setFitHeight(30);
+
+
+
                 ListCell<DataP> listCell = new ListCell<DataP>(){
 
+                    public Button getButton(DataP temp){
+
+                        Button bu = new Button(temp.getName() + "button");
+                        bu.setOnAction(new EventHandler<ActionEvent>() {
+                            @Override
+                            public void handle(ActionEvent event) {
+                                System.out.println(temp.getName() + "------------"+ temp.getAge());
+                            }
+                        });
+                        return bu;
+                    }
                     /**
                      * 为了让startEdit获取当前选择的对象，增加start
                      */
@@ -142,19 +169,23 @@ public class ListViewControllerJavaBean implements Initializable {
                     public void startEdit() {
                         cell = this; /*无法直接使用listCell 只能间接cell = this 类似this.setGraphics*/
                         super.startEdit();
+
+                        /**
+                         * startEdit
+                         */
+
                         HBox hbox = new HBox();
                         hbox.setAlignment(Pos.CENTER_LEFT);
-                        ImageView iv = new ImageView(new Image(App.class.getResourceAsStream("avatar.jpg")));
-                        iv.setPreserveRatio(true);
-                        iv.setFitHeight(30);
-
-                        Button bu = new Button(temp.getName() + "button");
+                        Button bu = getButton(temp);
                         TextField tb_name = new TextField(temp.getName());
                         TextField tb_age = new TextField(temp.getAge());
                         tb_name.setPrefWidth(100);
                         tb_age.setPrefWidth(100);
                         hbox.getChildren().addAll(iv, bu, tb_name, tb_age);
                         this.setGraphic(hbox);
+                        /**
+                         * name编辑完后执行commitEdit动作
+                         */
                         tb_name.setOnKeyPressed(new EventHandler<KeyEvent>() {
                             @Override
                             public void handle(KeyEvent event) {
@@ -173,6 +204,9 @@ public class ListViewControllerJavaBean implements Initializable {
                             }
                         });
 
+                        /**
+                         * 开始编辑之后enter 之后会发出什么动作？
+                         */
                         tb_age.setOnKeyPressed(new EventHandler<KeyEvent>() {
                             @Override
                             public void handle(KeyEvent event) {
@@ -200,29 +234,24 @@ public class ListViewControllerJavaBean implements Initializable {
                     public void cancelEdit() {
                         super.cancelEdit();
 
+                        /**
+                         *  cancelEdit
+                         */
+
                         HBox hbox = new HBox();
                         hbox.setAlignment(Pos.CENTER_LEFT);
-                        ImageView iv = new ImageView(new Image(App.class.getResourceAsStream("avatar.jpg")));
-                        iv.setPreserveRatio(true);
-                        iv.setFitHeight(30);
-
-                        Button bu = new Button(temp.getName() + "button");
-                        Label tb_name = new Label(temp.getName()+"can");
-                        Label tb_age = new Label(temp.getAge()+"can");
-                        tb_name.setPrefWidth(100);
-                        tb_age.setPrefWidth(100);
-                        hbox.getChildren().addAll(iv, bu, tb_name, tb_age);
-                        bu.setOnAction(new EventHandler<ActionEvent>() {
-                            @Override
-                            public void handle(ActionEvent event) {
-                                System.out.println(temp.getName() + "------------"+ temp.getAge());
-                            }
-                        });
+                        Button bu = getButton(temp);
+                        Label lb_name = new Label(temp.getName()+"can");
+                        Label lb_age = new Label(temp.getAge()+"can");
+                        lb_name.setPrefWidth(100);
+                        lb_age.setPrefWidth(100);
+                        hbox.getChildren().addAll(iv, bu, lb_name, lb_age);
                         this.setGraphic(hbox);
                     }
 
                     /**
                      * 如果提交编辑？
+                     * 可以删除
                      * @param newValue
                      */
                     @Override
@@ -242,20 +271,14 @@ public class ListViewControllerJavaBean implements Initializable {
                         if (empty == false) {
                             HBox hbox =new HBox();
                             hbox.setAlignment(Pos.CENTER_LEFT);
-                            ImageView iv = new ImageView(new Image(App.class.getResourceAsStream("avatar.jpg")));
-                            iv.setPreserveRatio(true);
-                            iv.setFitHeight(30);
+//                            ImageView iv = new ImageView(new Image(App.class.getResourceAsStream("avatar.jpg")));
+//                            iv.setPreserveRatio(true);
+//                            iv.setFitHeight(30);
 
-                            Button bu = new Button(item.getName() + "button");
+                            Button bu = getButton(item);
                             Label lb = new Label(item.getName());
                             Label age = new Label(item.getAge());
                             hbox.getChildren().addAll(iv,bu,lb,age);
-                            bu.setOnAction(new EventHandler<ActionEvent>() {
-                                @Override
-                                public void handle(ActionEvent event) {
-                                    System.out.println(item.getName() + "------------"+ item.getAge());
-                                }
-                            });
                             this.setGraphic(hbox);
 
 //                            this.setGraphic(new Label(item.getName()+ "*****"+item.getAge()));
