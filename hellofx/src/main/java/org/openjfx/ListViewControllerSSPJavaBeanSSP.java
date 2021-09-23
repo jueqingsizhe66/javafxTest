@@ -11,7 +11,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
 import javafx.scene.control.cell.TextFieldListCell;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
@@ -75,6 +74,12 @@ public class ListViewControllerSSPJavaBeanSSP implements Initializable {
 //            }
 //        });
 //        lv_stu.setItems(oblist);
+        /**
+         * DataSSP既可以是SimpleStringProperty等Property类，也可以是由众多SimpleStringProperty字段属性组合的新类
+         * arr返回的Property[]数组，代表着oblist需要监听的字段，如果nameProperty()或者ageProperty()的任何一个字段发生改变
+         * 都会触发相应的机关！(具备主线功能)
+         * 机关会使得addListener 发生动作
+         */
         oblist = FXCollections.observableArrayList(new Callback<DataSSP, Observable[]>() {
             @Override
             public Observable[] call(DataSSP param) {
