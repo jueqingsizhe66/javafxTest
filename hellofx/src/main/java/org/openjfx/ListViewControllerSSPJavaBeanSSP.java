@@ -4,13 +4,19 @@ import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldListCell;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
@@ -20,6 +26,7 @@ import java.net.URL;
 import java.util.Comparator;
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 /**
  * 第64课 https://www.bilibili.com/video/BV1Lt411z7SL?spm_id_from=333.999.0.0
@@ -35,12 +42,26 @@ public class ListViewControllerSSPJavaBeanSSP implements Initializable {
     private ListView lv_stu;
 
     @FXML
+    private TextField tf_input;
+
+    @FXML
+    private Label lb_movie;
+
+    @FXML
+    private Button btn_sort;
+    @FXML
     private Label lb_enter;
     private DataSSP s1 ;
     private DataSSP s2 ;
     private DataSSP s3 ;
     private DataSSP s4 ;
     private DataSSP s5 ;
+
+    private DataSSP s6 ;
+    private DataSSP s7 ;
+    private DataSSP s8 ;
+    private DataSSP s9 ;
+    private DataSSP s10 ;
     /**
      * 好处是设置监听  不能针对控件直接
      */
@@ -93,7 +114,13 @@ public class ListViewControllerSSPJavaBeanSSP implements Initializable {
         s3=new DataSSP(new SimpleStringProperty("Piano"),new SimpleStringProperty("149"));
         s4=new DataSSP(new SimpleStringProperty("Pie"),new SimpleStringProperty("391"));
         s5=new DataSSP(new SimpleStringProperty("小丑"),new SimpleStringProperty("39"));
-        oblist.addAll(s1,s2,s3,s4,s5);
+
+        s6=new DataSSP(new SimpleStringProperty("t1"),new SimpleStringProperty("39"));
+        s7=new DataSSP(new SimpleStringProperty("t2"),new SimpleStringProperty("48"));
+        s8=new DataSSP(new SimpleStringProperty("534"),new SimpleStringProperty("735"));
+        s9=new DataSSP(new SimpleStringProperty("ht"),new SimpleStringProperty("84"));
+        s10=new DataSSP(new SimpleStringProperty("funnay"),new SimpleStringProperty("37"));
+        oblist.addAll(s1,s2,s3,s4,s5,s6,s7,s8,s9,s10);
 //        lv_stu.getItems().add(oblist); /*不需要添加直接绑定*/
 //        lv_stu.getItems().addAll("IronMan",
 //                "Titanic",
@@ -176,6 +203,24 @@ public class ListViewControllerSSPJavaBeanSSP implements Initializable {
                             }
                         },lv_stu.getSelectionModel().selectedItemProperty()));
 
+        tf_input.prefHeightProperty().bind(lb_movie.prefHeightProperty());
+        tf_input.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                FilteredList<DataSSP> fl = oblist.filtered(new Predicate<DataSSP>() {
+                    @Override
+                    public boolean test(DataSSP dataSSP) {
+                        if (dataSSP.getName().toLowerCase().contains(newValue.toLowerCase())) {
+                            return true;
+                        }else{
+                            return false;
+                        }
+                    }
+                });
+                lv_stu.setItems(fl);
+            }
+        });
+
         /**
          * https://stackoverflow.com/questions/38543273/javafx-bindings-createstringbinding-but-binding-not-actually-work
          * 必须得告诉Bindings要观察哪个发生变化
@@ -254,6 +299,19 @@ public class ListViewControllerSSPJavaBeanSSP implements Initializable {
                return o2.getName().compareTo(o1.getName());
            }
        });
+    }
+
+    @FXML
+    public void btnSort(){
+        SortedList<DataSSP> sl = oblist.sorted(new Comparator<DataSSP>() {
+            @Override
+            public int compare(DataSSP o1, DataSSP o2) {
+                int a  = Integer.valueOf(o1.getAge());
+                int b  = Integer.valueOf(o2.getAge());
+                return a-b;
+            }
+        });
+        lv_stu.setItems(sl);
     }
 }
 

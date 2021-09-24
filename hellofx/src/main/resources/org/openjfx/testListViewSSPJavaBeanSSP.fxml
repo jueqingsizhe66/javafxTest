@@ -3,15 +3,16 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
 <AnchorPane prefHeight="491.0" prefWidth="642.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ListViewControllerSSPJavaBeanSSP">
    <children>
-      <ListView fx:id="lv_stu" editable="true" layoutX="123.0" layoutY="62.0" prefHeight="200.0" prefWidth="200.0" />
+      <ListView fx:id="lv_stu" editable="true" layoutX="123.0" layoutY="72.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.topAnchor="72.0" />
       <Button layoutX="471.0" layoutY="210.0" mnemonicParsing="false" onAction="#switchToPrimary" text="返回主界面" />
       <Button layoutX="123.0" layoutY="281.0" mnemonicParsing="false" onAction="#showMovieList" text="showSelectedMovies" />
-      <Label layoutX="123.0" layoutY="40.0" text="Movie List:" />
+      <Label fx:id="lb_movie" layoutX="123.0" layoutY="37.0" text="Movie List:" />
       <HBox layoutX="123.0" layoutY="324.0" prefHeight="40.0" prefWidth="430.0" spacing="10.0">
          <children>
             <Button fx:id="btn_insert" mnemonicParsing="false" onAction="#insertList" text="首行插入" />
@@ -23,5 +24,7 @@
       <Label layoutX="34.0" layoutY="116.0" text="JavaBeanSSP" textFill="#bc1313" />
       <Label layoutX="9.0" layoutY="181.0" text="1.what you choose?" textFill="#e41b1b" />
       <Label fx:id="lb_enter" layoutX="18.0" layoutY="147.0" text="What you choose?" textFill="#bc1313" />
+      <TextField fx:id="tf_input" layoutX="210.0" layoutY="33.0" prefHeight="23.0" prefWidth="98.0" promptText="请搜索" />
+      <Button fx:id="btn_sort" layoutX="338.0" layoutY="26.0" mnemonicParsing="false" onAction="#btnSort" text="排序" />
    </children>
 </AnchorPane>
