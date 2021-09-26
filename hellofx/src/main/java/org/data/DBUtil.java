@@ -6,7 +6,12 @@
  */
 package org.data;
 
+import org.apache.ibatis.io.Resources;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,9 +23,45 @@ public class DBUtil {
 
     //https://blog.csdn.net/superdangbo/article/details/78732700  驱动器问题 mysql8.0以上
     // FXML is not a compiled language; you do not need to recompile the code to see the changes
-    private static String driver = "com.mysql.cj.jdbc.Driver";
-    //https://www.cnblogs.com/godwithus/p/9788790.html  时区问题
-    private static String URL = "jdbc:mysql://localhost:3306/studentdb?useSSL=false&useUnicode=true&characterEncoding=UTF8&serverTimezone=UTC";
+
+    private static final String driver;
+    private static final String URL;
+    private static final String userName;
+    private static final String Password;
+
+    //Connection c1 = null;
+    static{
+        try
+        {
+            InputStream is = null;
+            Properties ps  = new Properties();
+            //is = JDBCUtils.class.getClassLoader().getResourceAsStream(""
+            //		+ "com/jdbc/test/sql.properties");
+            is = Resources.getResourceAsStream("jdbc.properties");
+            //这种情况省略宝和getClassLoader()
+            ps.load(is);
+            driver = ps.getProperty("jdbc.driver");
+            //			System.out.println(mysqlDriver);
+            URL = ps.getProperty("jdbc.url");
+            //			System.out.println(connectDatabase);
+            userName = ps.getProperty("jdbc.username");
+            //			System.out.println(userName);
+            Password = ps.getProperty("jdbc.password");
+            //			System.out.println(Password);
+            //仅仅在静态代码段中加载一次驱动即可（在运行中）
+
+        } catch ( IOException e)
+        {
+            // TODO Auto-generated catch block
+            //System.out.println("配置文件加载失败"+e.getMessage());
+            throw new RuntimeException("配置文件sql.properties加载失败"+e.getMessage());
+            //return null;
+        }
+    }
+
+//    private static String driver = "com.mysql.cj.jdbc.Driver";
+//    //https://www.cnblogs.com/godwithus/p/9788790.html  时区问题
+//    private static String URL = "jdbc:mysql://localhost:3306/studentdb?useSSL=false&useUnicode=true&characterEncoding=UTF8&serverTimezone=UTC";
     private static Connection con = null;
     private static Statement smt = null;
     private static ResultSet rs = null;
@@ -29,7 +70,7 @@ public class DBUtil {
         try {
 
             Class.forName(driver);
-            return DriverManager.getConnection(URL, "root", "457866");
+            return DriverManager.getConnection(URL, userName, Password);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
