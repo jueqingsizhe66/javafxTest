@@ -138,7 +138,7 @@ public class TreeTableViewController implements Initializable {
         /**
          * 如果只加载姓名，那么就注释掉age_column和sex_column的工厂属性
          */
-        name_column.setCellValueFactory(new TreeItemPropertyValueFactory<Data3,String>("name"));
+        name_column.setCellValueFactory(new TreeItemPropertyValueFactory<Data3,String>("名字"));
 //        name_column.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Data3, String>, ObservableValue<String>>() {
 //            @Override
 //            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Data3, String> param) {

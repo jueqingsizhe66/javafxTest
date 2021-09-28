@@ -12,9 +12,14 @@
    <children>
       <TableView fx:id="tv_product" layoutX="28.0" layoutY="45.0" prefHeight="343.0" prefWidth="462.0">
         <columns>
-          <TableColumn fx:id="ttc_name" prefWidth="84.0" text="name" />
-          <TableColumn fx:id="ttc_price" minWidth="0.0" prefWidth="82.0" text="price" />
+            <TableColumn fx:id="ttc_to" prefWidth="75.0" text="together">
+               <columns>
+                <TableColumn fx:id="ttc_name" prefWidth="84.0" text="name" />
+                <TableColumn fx:id="ttc_price" minWidth="0.0" prefWidth="82.0" text="price" />
+               </columns>
+            </TableColumn>
             <TableColumn fx:id="ttc_quantity" prefWidth="76.0" text="quantity" />
+            <TableColumn fx:id="ttc_per" prefWidth="75.0" text="比例" />
         </columns>
       </TableView>
       <Button layoutX="504.0" layoutY="339.0" mnemonicParsing="false" onAction="#switchToPrimary" text="返回主界面" />

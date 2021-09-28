@@ -293,6 +293,11 @@ public class PrimaryController  {
         App.setRoot("testTableView");
     }
 
+
+    @FXML
+    private void switchToTableViewMap() throws IOException {
+        App.setRoot("testTableViewMapController");
+    }
     @FXML
     private void switchToTreeView() throws IOException {
         App.setRoot("testTreeView");

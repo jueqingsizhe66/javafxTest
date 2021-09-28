@@ -43,6 +43,8 @@
          <children>
             <Button mnemonicParsing="false" onAction="#switchToJAVAFXCollections" prefHeight="23.0" prefWidth="217.0" text="JAVAFXCollections测试" />
             <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchToBindTheory" prefHeight="23.0" prefWidth="140.0" text="绑定测试" />
+            <Button mnemonicParsing="false" onAction="#switchToTableView" prefHeight="23.0" prefWidth="167.0" text="打开TableView" />
+            <Button layoutX="407.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchToTableViewMap" prefHeight="23.0" prefWidth="167.0" text="打开TableViewMap" />
          </children>
          <padding>
             <Insets left="20.0" />
@@ -55,7 +57,6 @@
                   <Insets right="5.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#switchToTableView" prefHeight="23.0" prefWidth="167.0" text="打开TableView" />
             <Button layoutX="367.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchToWebView" prefHeight="23.0" prefWidth="145.0" text="打开WebView" />
             <Button mnemonicParsing="false" onAction="#switchToTreeTableView" prefHeight="23.0" prefWidth="199.0" text="打开TreeTableView" />
          </children>

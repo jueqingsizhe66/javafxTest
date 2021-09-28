@@ -169,6 +169,7 @@ public class testDynamicDrawing implements Initializable {
 
 /**
  * 产生一定数据结构的task
+ * 根据Task制订动态获取过程
  */
 class DataTask extends ScheduledService<ArrayList<Integer>> {
 

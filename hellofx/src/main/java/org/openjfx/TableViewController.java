@@ -7,11 +7,10 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.geometry.Pos;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 
 import java.io.IOException;
@@ -32,6 +31,11 @@ public class TableViewController implements Initializable {
     @FXML
     private TableColumn ttc_quantity;
 
+    @FXML
+    private TableColumn ttc_per;
+
+    @FXML
+    private TableColumn ttc_to;
     //
     @FXML
     private TextField tf_name;
@@ -91,13 +95,49 @@ public class TableViewController implements Initializable {
 
         tv_product.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         ttc_name.setMinWidth(70);
+        /**
+         * PropertyValueFactory到底是什么？
+         */
+
         ttc_name.setCellValueFactory(new PropertyValueFactory<>("name"));
 
         ttc_price.setMinWidth(70);
+
         ttc_price.setCellValueFactory(new PropertyValueFactory<>("price"));
 
         ttc_quantity.setMinWidth(70);
         ttc_quantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+
+
+        ttc_per.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        ttc_per.setCellFactory(new Callback<TableColumn<Product,Number>, TableCell<Product,Number>>(){
+
+            @Override
+            public TableCell<Product, Number> call(TableColumn<Product, Number> param) {
+                TableCell<Product, Number>  cell = new TableCell<Product, Number>(){
+
+                    @Override
+                    protected void updateItem(Number item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty == false && item != null) {
+                            /**
+                             * Hbox控制布局的方式很有用，支持拖拉跟随列变化
+                             * 在javafx中一般布局类和textfield支持该功能
+                             */
+                            HBox hbox = new HBox();
+//                            hbox.setStyle("-fx-background-color: #fff344");
+                            hbox.setAlignment(Pos.CENTER);;
+
+                            ProgressIndicator progressIndicator = new ProgressIndicator(item.doubleValue()/800.0);
+                            hbox.getChildren().add(progressIndicator);
+                            this.setGraphic(hbox);
+
+                        }
+                    }
+                };
+                return cell;
+            }
+        });
 
         tv_product.setItems(getProduct());
         // 这时候不能再添加了，因为已经注解了
