@@ -340,9 +340,18 @@ public class PrimaryController  {
     @FXML
     private void switchToTreeTableView() throws IOException {
         App.setRoot("treeTableView");
-
     }
 
+
+    @FXML
+    private void switchToPagination() throws IOException {
+        App.setRoot("testPagination");
+    }
+
+    @FXML
+    private void switchToSlider() throws IOException {
+        App.setRoot("testSlider");
+    }
     @FXML
     private void switchToListViewSSP() throws IOException {
         App.setRoot("testListViewSSP");
