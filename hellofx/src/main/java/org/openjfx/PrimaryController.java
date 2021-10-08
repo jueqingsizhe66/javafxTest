@@ -352,6 +352,11 @@ public class PrimaryController  {
     private void switchToSlider() throws IOException {
         App.setRoot("testSlider");
     }
+
+    @FXML
+    private void switchToDatePicker() throws IOException {
+        App.setRoot("testDatePicker");
+    }
     @FXML
     private void switchToListViewSSP() throws IOException {
         App.setRoot("testListViewSSP");

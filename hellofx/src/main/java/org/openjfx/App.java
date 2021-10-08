@@ -20,6 +20,7 @@ import java.io.IOException;
  * JavaFX App
  */
 public class App extends Application {
+    private static Stage mainStage;
     @Override
     public void init() throws Exception {
         System.out.println("Initialize   ^-^"+ Thread.currentThread().getName());
@@ -64,6 +65,7 @@ public class App extends Application {
      */
     @Override
     public void start(Stage stage) throws IOException {
+        mainStage=stage;
         System.out.println("start stage "+  Thread.currentThread().getName());
         scene = new Scene(loadFXML("primary"));
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
@@ -115,6 +117,9 @@ public class App extends Application {
     static void setRoot(String fxml) throws IOException {
         // 不断地切换桌布的过程！ 一个桌布包含一个布局   一个玻璃纸包含一个布局  每一个桌布都是一张玻璃纸 看似没有 实则有！
         scene.setRoot(loadFXML(fxml));
+    }
+    static Stage getYourStage(){
+        return mainStage;
     }
 
 

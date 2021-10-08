@@ -45,6 +45,7 @@
             <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchToBindTheory" prefHeight="23.0" prefWidth="140.0" text="绑定测试" />
             <Button layoutX="407.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchToTableViewMap" prefHeight="23.0" prefWidth="167.0" text="打开TableViewMap" />
             <Button mnemonicParsing="false" onAction="#switchToTableView" prefHeight="23.0" prefWidth="167.0" text="打开TableView" />
+            <Button layoutX="584.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchToDatePicker" prefHeight="23.0" prefWidth="167.0" text="打开DatePicker" />
          </children>
          <padding>
             <Insets left="20.0" />
