@@ -1,10 +1,14 @@
 package org.openjfx;
 
+import cn.hutool.core.date.DateUtil;
+import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
@@ -13,15 +17,30 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.net.URL;
+import java.time.LocalDateTime;
+import java.util.ResourceBundle;
 
-public class PrimaryController  {
+public class PrimaryController implements Initializable {
 
     @FXML
+    private JFXButton jbtn_time;
+
+    @FXML
+    private void clickTime(){
+        jbtn_time.setOnAction(event -> Notifications.create()
+                .position(Pos.TOP_CENTER)
+                .title("你点我")
+                .text("现在时间是: " + DateUtil.format(LocalDateTime.now(),"yyyy-MM-dd HH:mm:ss")).show()
+        );
+    }
+    @FXML
     private void switchToSecondary() throws IOException {
-        App.setRoot("secondary");
+        App.setRoot("secondaryProfessor");
     }
 
     @FXML
@@ -373,6 +392,15 @@ public class PrimaryController  {
     private void switchToListViewJavaBeanSSP() throws IOException {
         App.setRoot("testListViewSSPJavaBeanSSP");
 
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        jbtn_time.setOnAction(event -> Notifications.create()
+                .position(Pos.TOP_CENTER)
+                .title("你点我")
+                .text("现在时间是: " + DateUtil.format(LocalDateTime.now(),"yyyy-MM-dd HH:mm:ss")).show()
+        );
     }
 }
 

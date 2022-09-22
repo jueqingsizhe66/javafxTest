@@ -10,6 +10,9 @@ import java.io.IOException;
 
 import static org.openjfx.App.loadFXML;
 
+/**
+ * https://www.bilibili.com/video/BV1av411B7LC?spm_id_from=333.999.0.0  显得工整
+ */
 public class LoginController {
     //https://www.yiibai.com/javafx/javafx_filechooser.html
     @FXML

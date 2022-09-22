@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.MapValueFactory;
 import javafx.util.Callback;
 
 import java.io.IOException;
@@ -63,15 +64,23 @@ public class TableViewMapController implements Initializable{
 
         ttcm_view.setItems(list);
 
-        ttcm_name.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<HashMap<String, SimpleStringProperty>, String>, ObservableValue<String>>() {
-            @Override
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<HashMap<String, SimpleStringProperty>, String> param) {
-                /**
-                 * 返回的其实就是SimpleStringPropertyProperty
-                 */
-                return param.getValue().get("name");
-            }
-        });
+        /**
+         * 写法1 简化写法
+         */
+        ttcm_name.setCellValueFactory(new MapValueFactory("name"));
+        /**
+         * 写法2  原理写法
+         * HashMap<String,SimpleStringProperty 转化为ObservableValue<String>类型
+         */
+//        ttcm_name.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<HashMap<String, SimpleStringProperty>, String>, ObservableValue<String>>() {
+//            @Override
+//            public ObservableValue<String> call(TableColumn.CellDataFeatures<HashMap<String, SimpleStringProperty>, String> param) {
+//                /**
+//                 * 返回的其实就是SimpleStringPropertyProperty
+//                 */
+//                return param.getValue().get("name");
+//            }
+//        });
 
 
         ttcm_age.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<HashMap<String, SimpleStringProperty>, String>, ObservableValue<String>>() {

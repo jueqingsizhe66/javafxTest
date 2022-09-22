@@ -125,6 +125,10 @@ public class TreeTableViewController implements Initializable {
         });
 
 
+        /**
+         * 为什么是TreeTableColumn<Data3,String> 等类型 而不是TreeTableColumn<Data3>
+         *     以为只是针对具体的javabean里头的字段
+         */
         /*以下为TableView设置*/
         TreeTableColumn<Data3, String> name_column = new TreeTableColumn<>("姓名");
         TreeTableColumn<Data3, Integer> age_column = new TreeTableColumn<>("年龄");

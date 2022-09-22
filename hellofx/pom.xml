@@ -11,7 +11,12 @@
         <javafx.maven.plugin.version>0.0.6</javafx.maven.plugin.version>
         <version.hutool>5.7.13</version.hutool>
     </properties>
-
+ <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
     <dependencies>
         <dependency>
             <groupId>org.openjfx</groupId>
@@ -38,12 +43,12 @@
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
-            <version>3.5.4</version>
+            <version>3.5.10</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.19</version>
+            <version>8.0.30</version>
         </dependency>
         <!--https://hutool.cn/docs/#/ -->
         <dependency>
@@ -75,6 +80,42 @@
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
         </dependency>
+      <dependency>
+            <groupId>com.github.leewyatt</groupId>
+            <artifactId>rxcontrols</artifactId>
+            <!-- 11.x.y -->
+            <version>11.0.2</version>
+        </dependency>
+        <!--数据库操作-->
+        <dependency>
+            <groupId>com.jfinal</groupId>
+            <artifactId>activerecord</artifactId>
+            <version>5.0.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.2.11</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jfinal</groupId>
+            <artifactId>jfinal</artifactId>
+            <version>5.0.2</version>
+        </dependency>
+        <!--add JFXButton-->
+        <dependency>
+            <groupId>com.jfoenix</groupId>
+            <artifactId>jfoenix</artifactId>
+            <version>9.0.10</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.controlsfx/controlsfx -->
+        <!--add Notifications-->
+        <dependency>
+            <groupId>org.controlsfx</groupId>
+            <artifactId>controlsfx</artifactId>
+            <version>11.1.1</version>
+        </dependency>
 
     </dependencies>
     <build>
@@ -85,6 +126,8 @@
                 <version>3.8.1</version>
                 <configuration>
                     <release>${maven.compiler.release}</release>
+                    <source>14</source>
+                    <target>14</target>
                 </configuration>
             </plugin>
             <plugin>
