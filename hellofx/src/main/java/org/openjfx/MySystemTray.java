@@ -12,10 +12,10 @@ import java.net.URL;
 
 /**
  * 使用方式
- *直接调用 MySystemTray.getInstance().listen(stage);  即可
- *
+ * 直接调用 MySystemTray.getInstance().listen(stage);  即可
+ * <p>
  * 如果你关闭 aStage 打开了 bStage , 系统托盘需要重新监听bStage:   MySystemTray.getInstance().listen(bStage);
- *
+ * <p>
  * 关闭窗口的时候可以调用 MySystemTray.getInstance().hide(stage)
  */
 public class MySystemTray {
@@ -28,7 +28,7 @@ public class MySystemTray {
     private static MouseListener mouseListener;
 
 
-    static{
+    static {
         //执行stage.close()方法,窗口不直接退出
         // 默认是 Platform.setImplicitExit(true); 关闭就是真关闭了！
         // 如果这时候设置false，那么关闭之后其实依然存在
@@ -45,24 +45,27 @@ public class MySystemTray {
         //系统托盘图标  TrayIcon也是Awt的
         trayIcon = new TrayIcon(image);
         //初始化监听事件(空)
-        showListener = e -> Platform.runLater(() -> {});
-        exitListener = e -> {};
-        mouseListener = new MouseAdapter() {};
+        showListener = e -> Platform.runLater(() -> {
+        });
+        exitListener = e -> {
+        };
+        mouseListener = new MouseAdapter() {
+        };
     }
 
-    public static MySystemTray getInstance(){
-        if(instance == null){
+    public static MySystemTray getInstance() {
+        if (instance == null) {
             instance = new MySystemTray();
         }
         return instance;
     }
 
-    private MySystemTray(){
+    private MySystemTray() {
         try {
             //检查系统是否支持托盘
             if (!SystemTray.isSupported()) {
                 //系统托盘不支持
-                System.out.println(Thread.currentThread().getStackTrace()[ 1 ].getClassName() + ":系统托盘不支持");
+                System.out.println(Thread.currentThread().getStackTrace()[1].getClassName() + ":系统托盘不支持");
                 return;
             }
             //设置图标尺寸自动适应
@@ -86,9 +89,9 @@ public class MySystemTray {
     /**
      * 更改系统托盘所监听的Stage
      */
-    public void listen(Stage stage){
+    public void listen(Stage stage) {
         //防止报空指针异常
-        if(showListener == null || exitListener == null || mouseListener == null || showItem == null || exitItem == null || trayIcon == null){
+        if (showListener == null || exitListener == null || mouseListener == null || showItem == null || exitItem == null || trayIcon == null) {
             return;
         }
         //移除原来的事件
@@ -121,7 +124,7 @@ public class MySystemTray {
     /**
      * 关闭窗口
      */
-    public void hide(Stage stage){
+    public void hide(Stage stage) {
         Platform.runLater(() -> {
             //如果支持系统托盘,就隐藏到托盘,不支持就直接退出
             if (SystemTray.isSupported()) {
@@ -136,11 +139,15 @@ public class MySystemTray {
     /**
      * 点击系统托盘,显示界面(并且显示在最前面,将最小化的状态设为false)
      */
-    private void showStage(Stage stage){
+    private void showStage(Stage stage) {
         //点击系统托盘,
         Platform.runLater(() -> {
-            if(stage.isIconified()){ stage.setIconified(false);}
-            if(!stage.isShowing()){ stage.show(); }
+            if (stage.isIconified()) {
+                stage.setIconified(false);
+            }
+            if (!stage.isShowing()) {
+                stage.show();
+            }
             stage.toFront();
         });
     }

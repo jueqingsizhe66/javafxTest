@@ -43,6 +43,7 @@ public class ListViewControllerSSP implements Initializable {
         App.setRoot("primary");
     }
 
+    //region 初始化
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         /**
@@ -141,7 +142,9 @@ public class ListViewControllerSSP implements Initializable {
         });
 
     }
+    //endregion
 
+    //region 展示列表
     @FXML
     public void showMovieList(){
        if(!lv_stu.getSelectionModel().getSelectedItems().isEmpty()){
@@ -157,13 +160,17 @@ public class ListViewControllerSSP implements Initializable {
            System.out.println("You have not selected movie(s) what you wanno watch");
        }
     }
+    //endregion
+    //region 插入列表
     @FXML
     public void insertList()
     {
        oblist.add(0,new SimpleStringProperty("hello"));
 
     }
+    //endregion
 
+    //region 更新列表
     @FXML
     public void updateList(){
         /**
@@ -187,13 +194,17 @@ public class ListViewControllerSSP implements Initializable {
          * 方法2 解决属性层级监控的方法，添加listview的属性层级的Callback， 对应类型发生改变，则执行相应操作，
          */
     }
+    //endregion
 
+    //region 删除列表
     @FXML
     public void DeleteList(){
         oblist.remove(0);
 
     }
+    //endregion
 
+    //region 排序列表
     @FXML
     public void sortList(){
        oblist.sort(new Comparator<SimpleStringProperty>() {
@@ -203,4 +214,5 @@ public class ListViewControllerSSP implements Initializable {
            }
        });
     }
+    //endregion
 }

@@ -40,11 +40,11 @@ public class ImageViewWithBlurController implements Initializable {
     private int hidepaneWidth = 200;
     private int gaussBlurConstant = 30;
     // 指定拉出动作的时间
-    private double pullTime=0.5;
+    private double pullTime = 0.5;
 
 
     @FXML
-    public void pullout(){
+    public void pullout() {
 
         tt.setFromX(-hidepaneWidth);
         tt.setToX(0);
@@ -52,13 +52,17 @@ public class ImageViewWithBlurController implements Initializable {
     }
 
     @FXML
-    public void pushback(){
+    public void pushback() {
         tt.setFromX(0);
         tt.setToX(-hidepaneWidth);
         tt.play();
 
-    };
+    }
 
+    ;
+
+
+    //region 初始化
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         iv_huailai.fitHeightProperty().bind(ap_main.heightProperty());
@@ -66,47 +70,50 @@ public class ImageViewWithBlurController implements Initializable {
         Node node = getView(ap_main);
         ap_main.getChildren().add(node);
 
-        tt  = new TranslateTransition(Duration.seconds(this.pullTime),node);
+        tt = new TranslateTransition(Duration.seconds(this.pullTime), node);
         tt.setInterpolator(Interpolator.EASE_OUT);
 
+        //region ChangeListener<Number>
         node.translateXProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number oldValue, Number newValue) {
-                int w =hidepaneWidth - (-newValue.intValue());
+                int w = hidepaneWidth - (-newValue.intValue());
                 // 图像从 -hidepaneWidth 到0 拉出来
                 // 图像从 00 到 -hidepaneWidth 推回去
                 System.out.println(newValue.intValue());
 
                 int h = (int) ap_main.getHeight();
-                if (w>0) {
+                if (w > 0) {
                     WritableImage wi = new WritableImage(w, h);
-                    iv_huailai.snapshot(new SnapshotParameters(),wi);
+                    iv_huailai.snapshot(new SnapshotParameters(), wi);
                     iv_blur.setImage(wi);
                 }
             }
         });
+        //endregion
     }
+    //endregion
 
 
     // 形成一个隐藏层
-    public Node getView(AnchorPane ap_main){
+    public Node getView(AnchorPane ap_main) {
         StackPane sp = new StackPane();
 
         AnchorPane ap_hide = new AnchorPane();
 
-        iv_blur  = new ImageView();
+        iv_blur = new ImageView();
 
         // 居然使用AnchorPane 这是我没考虑到的
-        ap_main.setRightAnchor(iv_blur,0.0);
+        ap_main.setRightAnchor(iv_blur, 0.0);
 
         iv_blur.setEffect(new GaussianBlur(this.gaussBlurConstant));
 
         ap_hide.getChildren().add(iv_blur);
 
-        VBox vbox  = new VBox(20);
+        VBox vbox = new VBox(20);
         vbox.setPrefWidth(hidepaneWidth);
         vbox.setAlignment(Pos.TOP_LEFT);
-        vbox.setBorder(new Border(new BorderStroke(Color.valueOf("#45454555"),BorderStrokeStyle.SOLID,null,new BorderWidths(1))));
+        vbox.setBorder(new Border(new BorderStroke(Color.valueOf("#45454555"), BorderStrokeStyle.SOLID, null, new BorderWidths(1))));
 //  -fx-background-color: #ffffff22 更浅
 //  -fx-background-color: #ffffff99 更黑
         vbox.setStyle("-fx-background-color: #ffffff22");
@@ -115,11 +122,11 @@ public class ImageViewWithBlurController implements Initializable {
             vbox.getChildren().add(new Text("Hello javafx         ! " + i));
         }
 
-        sp.getChildren().addAll(ap_hide,vbox);
+        sp.getChildren().addAll(ap_hide, vbox);
         sp.setTranslateX(-hidepaneWidth);
 
         vbox.prefHeightProperty().bind(ap_main.heightProperty());
-        return  sp;
+        return sp;
 
     }
 }

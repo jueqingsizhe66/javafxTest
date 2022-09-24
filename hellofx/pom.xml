@@ -7,9 +7,13 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>11</maven.compiler.release>
-        <javafx.version>18-ea+2</javafx.version>
-        <javafx.maven.plugin.version>0.0.6</javafx.maven.plugin.version>
-        <version.hutool>5.7.13</version.hutool>
+        <javafx.version>20-ea+2</javafx.version>
+        <!--        <javafx.version>18-ea+2</javafx.version>-->
+        <!--        <javafx.maven.plugin.version>0.0.6</javafx.maven.plugin.version>-->
+        <javafx.maven.plugin.version>0.0.8</javafx.maven.plugin.version>
+        <!--        <version.hutool>5.7.13</version.hutool>-->
+        <version.hutool>5.8.7</version.hutool>
+
     </properties>
  <repositories>
         <repository>

@@ -144,6 +144,8 @@ public class TableViewController implements Initializable {
 //        tv_product.getColumns().addAll(ttc_name,ttc_price,ttc_quantity);
 
     }
+
+    //region 按钮点击时间
     //Add button clicked
     @FXML
     public void addButtonClicked(){
@@ -169,5 +171,7 @@ public class TableViewController implements Initializable {
             productSelected.forEach(allProducts::remove);
         }
     }
+
+    //endregion
 
 }

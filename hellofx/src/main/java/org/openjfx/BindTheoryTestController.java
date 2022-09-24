@@ -169,9 +169,9 @@ public class BindTheoryTestController implements Initializable {
         ObservableList<String> oblist = FXCollections.observableArrayList();
         SimpleListProperty<String> list = new SimpleListProperty<String>(oblist);
 
-        list.add("A");
-        list.add("B");
-        list.add("C");
+        list.add("observableList");
+        list.add("SimpleListProperty");
+        list.add("add");
 
         System.out.println("----------------**** value at common int style objbind---------");
         ObjectBinding<String> objbind = list.valueAt(0);
@@ -190,9 +190,9 @@ public class BindTheoryTestController implements Initializable {
         ObservableList<String> oblist = FXCollections.observableArrayList();
         SimpleListProperty<String> list = new SimpleListProperty<String>(oblist);
 
-        list.add("A");
-        list.add("B");
-        list.add("C");
+        list.add("FXCollections");
+        list.add("observableArrayList");
+        list.add("SimpleListProperty");
         System.out.println("----------------**** value at SimpleIntegerProperty style objbind2 ---------");
         SimpleIntegerProperty sip = new SimpleIntegerProperty(2);
         ObjectBinding<String> objbind2  = list.valueAt(sip);

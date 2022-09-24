@@ -110,6 +110,7 @@ public class AlertController {
 //        result.ifPresent(name -> System.out.println("Your name: " + name));
     }
 
+    //region Choice对话框
     @FXML
     public void choiceDialog() throws  IOException{
         List<String> choices = new ArrayList<>();
@@ -133,6 +134,8 @@ public class AlertController {
 //        result.ifPresent(letter -> System.out.println("Your choice: " + letter));
 
     }
+    //endregion
+    //region 登录对话框
     @FXML
     public void loginDialog() throws  IOException{
         // Create the custom dialog.
@@ -191,7 +194,9 @@ public class AlertController {
             System.out.println("Username=" + usernamePassword.getKey() + ", Password=" + usernamePassword.getValue());
         });
     }
+    //endregion
 
+    //region 展示对话框
     @FXML
     public  void display() throws Exception {
         Stage window = new Stage();
@@ -215,6 +220,7 @@ public class AlertController {
         window.setScene(scene);
         window.showAndWait();
     }
+    //endregion
 
     @FXML
     private void switchToPrimary() throws IOException {

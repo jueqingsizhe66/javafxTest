@@ -45,11 +45,11 @@ public class ComboboxController implements Initializable {
         App.setRoot("primary");
     }
 
-//    https://stackoverflow.com/questions/13032257/combo-box-javafx-with-fxml
+    //    https://stackoverflow.com/questions/13032257/combo-box-javafx-with-fxml
 // https://blog.csdn.net/moakun/article/details/83050547  如何使用combobox
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ObservableList<String> options  = FXCollections.observableArrayList(
+        ObservableList<String> options = FXCollections.observableArrayList(
                 "漳州",
                 "厦门",
                 "福州",
@@ -86,27 +86,27 @@ public class ComboboxController implements Initializable {
         cb_priority.setValue("Normal");
         cb_priority.setCellFactory(
                 new Callback<ListView<String>, ListCell<String>>() {
-                    @Override public ListCell<String> call(ListView<String> param) {
+                    @Override
+                    public ListCell<String> call(ListView<String> param) {
                         final ListCell<String> cell = new ListCell<String>() {
                             {
                                 super.setPrefWidth(100);
                             }
-                            @Override public void updateItem(String item,
-                                                             boolean empty) {
+
+                            @Override
+                            public void updateItem(String item,
+                                                   boolean empty) {
                                 super.updateItem(item, empty);
                                 if (item != null) {
                                     setText(item);
                                     if (item.contains("High")) {
                                         setTextFill(Color.RED);
-                                    }
-                                    else if (item.contains("Low")){
+                                    } else if (item.contains("Low")) {
                                         setTextFill(Color.GREEN);
-                                    }
-                                    else {
+                                    } else {
                                         setTextFill(Color.BLACK);
                                     }
-                                }
-                                else {
+                                } else {
                                     setText(null);
                                 }
                             }
@@ -115,22 +115,22 @@ public class ComboboxController implements Initializable {
                     }
                 });
 
-        Student s1 = new Student("zh","299",10,"15101077342","回龙观");
-        Student s2 = new Student("zh2","299",10,"15101077342","回龙观");
-        Student s3 = new Student("zh3","299",10,"15101077342","回龙观");
-        Student s4 = new Student("zh4","299",10,"15101077342","回龙观");
-        Student s5 = new Student("zh5","299",10,"15101077342","回龙观");
+        Student s1 = new Student("zh", "299", 10, "15101077342", "回龙观");
+        Student s2 = new Student("zh2", "299", 10, "15101077342", "回龙观");
+        Student s3 = new Student("zh3", "299", 10, "15101077342", "回龙观");
+        Student s4 = new Student("zh4", "299", 10, "15101077342", "回龙观");
+        Student s5 = new Student("zh5", "299", 10, "15101077342", "回龙观");
 
         //bt_stu = new ComboBox<Student>();
         bt_stu.setPrefWidth(200);
-        bt_stu.getItems().addAll(s1,s2,s3,s4,s5);
+        bt_stu.getItems().addAll(s1, s2, s3, s4, s5);
         bt_stu.setConverter(new StringConverter<Student>() {
             @Override
             public String toString(Student object) {
-                if (object==null) {
+                if (object == null) {
                     return "Please Select option"; /*为空时候进行判断  少不了the little scheme*/
                 }
-                String value = object.getSname()+" - " + object.getSage()+" - "+object.getSphone();
+                String value = object.getSname() + " - " + object.getSage() + " - " + object.getSphone();
                 return value;
             }
 
@@ -144,8 +144,8 @@ public class ComboboxController implements Initializable {
         bt_stu.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                index= newValue.intValue();
-                System.out.println(" your new value is "+index);
+                index = newValue.intValue();
+                System.out.println(" your new value is " + index);
             }
         });
 
@@ -153,7 +153,7 @@ public class ComboboxController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
 
-                int temp =index;
+                int temp = index;
 //                System.out.println(bt_stu.getItems().get(index).getSname());
 //                System.out.println("Current Index is "+ index);
                 bt_stu.getItems().get(temp).setSname("修改的人民");
@@ -166,20 +166,19 @@ public class ComboboxController implements Initializable {
     }
 
     @FXML
-    public void emailSentNotify(){
+    public void emailSentNotify() {
         if (cb_email.getValue() != null &&
-                !cb_email.getValue().toString().isEmpty()){
+                !cb_email.getValue().toString().isEmpty()) {
             lb_text.setText("Your message was successfully sent"
                     + " to " + cb_email.getValue());
             cb_email.setValue(null);
             if (cb_priority.getValue() != null &&
-                    !cb_priority.getValue().toString().isEmpty()){
+                    !cb_priority.getValue().toString().isEmpty()) {
                 cb_priority.setValue(null);
             }
             tf_subject.clear();
             ta_body.clear();
-        }
-        else {
+        } else {
             lb_text.setText("You have not selected a recipient!");
         }
     }
