@@ -1,0 +1,35 @@
+2022-09-17 01:35:13 [ ERROR ] [ DruidDataSource.java :947(init)]  {dataSource-1} init error
+java.sql.SQLException: unknown jdbc driver : localhost
+	at druid@1.2.11/com.alibaba.druid.util.JdbcUtils.getDriverClassName(JdbcUtils.java:528)
+	at druid@1.2.11/com.alibaba.druid.pool.DruidDataSource.resolveDriver(DruidDataSource.java:1181)
+	at druid@1.2.11/com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:865)
+	at druid@1.2.11/com.alibaba.druid.pool.DruidDataSource.getConnection(DruidDataSource.java:1379)
+	at druid@1.2.11/com.alibaba.druid.pool.DruidDataSource.getConnection(DruidDataSource.java:1375)
+	at druid@1.2.11/com.alibaba.druid.pool.DruidDataSource.getConnection(DruidDataSource.java:79)
+	at activerecord@5.0.0/com.jfinal.plugin.activerecord.TableBuilder.build(TableBuilder.java:51)
+	at activerecord@5.0.0/com.jfinal.plugin.activerecord.ActiveRecordPlugin.start(ActiveRecordPlugin.java:228)
+	at hellofx/org.openjfx.HighlightListApp.main(HighlightListApp.java:135)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at javafx.graphics/com.sun.javafx.application.LauncherImpl.launchApplicationWithArgs(LauncherImpl.java:465)
+	at javafx.graphics/com.sun.javafx.application.LauncherImpl.launchApplication(LauncherImpl.java:364)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.base/sun.launcher.LauncherHelper$FXHelper.main(LauncherHelper.java:1081)
+2022-09-17 01:36:59 [ INFO ] [ DruidDataSource.java :972(init)]  {dataSource-1} inited
+2022-09-17 01:37:36 [ INFO ] [ DruidDataSource.java :972(init)]  {dataSource-1} inited
+2022-09-17 01:40:34 [ INFO ] [ DruidDataSource.java :972(init)]  {dataSource-1} inited
+2022-09-17 01:40:50 [ INFO ] [ DruidDataSource.java :972(init)]  {dataSource-1} inited
+2022-09-17 01:41:22 [ INFO ] [ DruidDataSource.java :972(init)]  {dataSource-1} inited
+2022-09-17 01:45:12 [ INFO ] [ DruidDataSource.java :972(init)]  {dataSource-1} inited
+2022-09-17 01:46:13 [ INFO ] [ DruidDataSource.java :972(init)]  {dataSource-1} inited
+2022-09-17 14:30:21 [ INFO ] [ DruidDataSource.java :972(init)]  {dataSource-1} inited
+2022-09-17 14:36:21 [ INFO ] [ DruidDataSource.java :972(init)]  {dataSource-1} inited
+2022-09-17 14:41:05 [ INFO ] [ DruidDataSource.java :972(init)]  {dataSource-1} inited
+2022-09-17 14:43:01 [ INFO ] [ DruidDataSource.java :972(init)]  {dataSource-1} inited
+2022-09-17 14:43:18 [ INFO ] [ DruidDataSource.java :972(init)]  {dataSource-1} inited
+2022-09-17 16:30:06 [ INFO ] [ DruidDataSource.java :972(init)]  {dataSource-1} inited
+2022-09-17 16:31:43 [ INFO ] [ DruidDataSource.java :972(init)]  {dataSource-1} inited
+2022-09-17 16:33:24 [ INFO ] [ DruidDataSource.java :972(init)]  {dataSource-1} inited
+2022-09-17 16:36:11 [ INFO ] [ DruidDataSource.java :972(init)]  {dataSource-1} inited
+2022-09-17 23:48:21 [ INFO ] [ DruidDataSource.java :972(init)]  {dataSource-1} inited

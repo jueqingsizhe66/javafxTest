@@ -1,0 +1,14 @@
+﻿# 数据库配置
+jdbcUrl = jdbc:mysql://localhost/jfinal_admin?useSSL=false&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+user = root
+password = 457866
+
+# jfinal 开发模式
+devMode = true
+
+# enjoy 模板引擎开发模式
+engineDevMode = true
+
+
+
+
