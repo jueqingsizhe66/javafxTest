@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.qny.TestDatePicker">
+   <children>
+      <DatePicker fx:id="dp_get" layoutX="57.0" layoutY="101.0" prefHeight="40.0" prefWidth="204.0" />
+      <HBox layoutX="57.0" layoutY="180.0" prefHeight="40.0" prefWidth="522.0" spacing="10.0">
+         <children>
+            <Button fx:id="dc_chooser" mnemonicParsing="false" onAction="#showDCDialog" prefHeight="23.0" prefWidth="152.0" text="directoryChooser" />
+            <Label fx:id="lb_dir" prefHeight="25.0" prefWidth="330.0" text="what you choose">
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </Label>
+         </children>
+         <padding>
+            <Insets right="10.0" />
+         </padding>
+      </HBox>
+      <HBox layoutX="57.0" layoutY="234.0" prefHeight="54.0" prefWidth="522.0" spacing="10.0">
+         <children>
+            <Button fx:id="file_chooser" mnemonicParsing="false" onAction="#showFileDialog" text="FileChooser" />
+            <Label fx:id="lb_file" prefHeight="15.0" prefWidth="410.0" text="WhatfILEYOUCHOOSE">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <HBox layoutX="57.0" layoutY="307.0" prefHeight="70.0" prefWidth="522.0" spacing="10.0">
+         <children>
+            <Button fx:id="file_chooser1" mnemonicParsing="false" onAction="#showFilesDialog" text="FileChooser" />
+            <Label fx:id="lb_file1" prefHeight="54.0" prefWidth="410.0" text="WhatfILEYOUCHOOSE">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

@@ -141,7 +141,7 @@
                 <configuration>
                     <jlinkImageName>hellofx</jlinkImageName>
                     <launcher>launcher</launcher>
-                    <mainClass>hellofx/org.openjfx.App</mainClass>
+                    <mainClass>hellofx/org.qny.App</mainClass>
                 </configuration>
             </plugin>
 
@@ -152,7 +152,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>org.openjfx.App</mainClass>
+                            <mainClass>org.qny.App</mainClass>
                             <classpathPrefix>lib/</classpathPrefix>
                             <addClasspath>true</addClasspath>
                         </manifest>
@@ -194,7 +194,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>org.openjfx.App</mainClass>
+                            <mainClass>org.qny.App</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

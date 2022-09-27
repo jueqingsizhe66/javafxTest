@@ -7,8 +7,8 @@ module hellofx {
     requires activerecord;
     requires druid;
 
-    opens org.openjfx to javafx.fxml;
-    exports org.openjfx;
+    opens org.qny to javafx.fxml;
+    exports org.qny;
     exports org.data.Entity.JFinal;
     exports org.data.Entity; //selectstring binding test
     requires java.desktop;

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="536.0" prefWidth="706.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.qny.ComboboxController">
+   <children>
+      <ComboBox fx:id="cb_name" layoutX="134.0" layoutY="425.0" prefWidth="150.0" promptText="What is your name?">
+<!--            <FXCollections fx:factory="observableArrayList" value="厦门">-->
+<!--               <String fx:value="漳州" />-->
+<!--               <String fx:value="福州" />-->
+<!--               <String fx:value="厦门" />-->
+<!--               <String fx:value="三明" />-->
+<!--            </FXCollections>-->
+      </ComboBox>
+      <Button layoutX="557.0" layoutY="425.0" mnemonicParsing="false" onAction="#switchToPrimary" text="返回主界面" />
+      <AnchorPane layoutX="92.0" layoutY="10.0" prefHeight="388.0" prefWidth="581.0" style="-fx-background-color: pink;">
+         <children>
+            <Label layoutX="14.0" layoutY="44.0" text="To:" />
+            <Label layoutX="317.0" layoutY="44.0" text="Priority:" />
+            <Label layoutX="14.0" layoutY="85.0" text="Subject:" />
+            <TextField fx:id="tf_subject" layoutX="79.0" layoutY="81.0" prefHeight="23.0" prefWidth="476.0" />
+            <ComboBox fx:id="cb_email" layoutX="83.0" layoutY="40.0" prefWidth="150.0" promptText="Email Address？" />
+            <ComboBox fx:id="cb_priority" layoutX="407.0" layoutY="36.0" prefWidth="150.0" />
+            <TextArea fx:id="ta_body" layoutX="9.0" layoutY="109.0" prefHeight="219.0" prefWidth="547.0" />
+            <Button layoutX="38.0" layoutY="351.0" mnemonicParsing="false" onAction="#emailSentNotify" text="Send" />
+            <Label fx:id="lb_text" layoutX="122.0" layoutY="355.0" prefHeight="15.0" prefWidth="360.0" text="Your message was successfully sent to:" />
+         </children>
+      </AnchorPane>
+      <ComboBox fx:id="bt_stu" layoutX="335.0" layoutY="425.0" prefWidth="150.0" />
+      <Button fx:id="bt_modified" layoutX="335.0" layoutY="468.0" mnemonicParsing="false" text="修改上方CBB名字" />
+   </children>
+</AnchorPane>

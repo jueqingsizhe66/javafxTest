@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.web.WebView?>
-<AnchorPane fx:id="ap_web" prefHeight="1038.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.WebViewController">
-   <children>
-      <WebView fx:id="wv_doge" prefHeight="400.0" prefWidth="600.0" />
-   </children>
-</AnchorPane>
