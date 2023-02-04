@@ -13,6 +13,15 @@
         <javafx.maven.plugin.version>0.0.8</javafx.maven.plugin.version>
         <!--        <version.hutool>5.7.13</version.hutool>-->
         <version.hutool>5.8.7</version.hutool>
+        <jfinal.version>5.0.8</jfinal.version>
+        <jfinal_activerecord.version>5.0.4</jfinal_activerecord.version>
+        <tio.version>3.8.3.v20220902-RELEASE</tio.version>
+        <druid.version>1.2.15</druid.version>
+        <jfoneix.version>9.0.10</jfoneix.version>
+        <controlsfx.version>11.1.2</controlsfx.version>
+        <mysql.version>8.0.30</mysql.version>
+<!--        <vfx.version>1.1.2</vfx.version>-->
+        <vfx.version>1.2.0</vfx.version>
 
     </properties>
  <repositories>
@@ -45,6 +54,11 @@
         </dependency>
 
         <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-swing</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
             <version>3.5.10</version>
@@ -52,7 +66,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.30</version>
+            <version>${mysql.version}</version>
         </dependency>
         <!--https://hutool.cn/docs/#/ -->
         <dependency>
@@ -94,31 +108,42 @@
         <dependency>
             <groupId>com.jfinal</groupId>
             <artifactId>activerecord</artifactId>
-            <version>5.0.0</version>
+            <version>${jfinal_activerecord.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jfinal</groupId>
+            <artifactId>jfinal</artifactId>
+            <version>${jfinal.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
-            <version>1.2.11</version>
-        </dependency>
-        <dependency>
-            <groupId>com.jfinal</groupId>
-            <artifactId>jfinal</artifactId>
-            <version>5.0.2</version>
+            <version>${druid.version}</version>
         </dependency>
         <!--add JFXButton-->
         <dependency>
             <groupId>com.jfoenix</groupId>
             <artifactId>jfoenix</artifactId>
-            <version>9.0.10</version>
+            <version>${jfoneix.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.controlsfx/controlsfx -->
         <!--add Notifications-->
         <dependency>
             <groupId>org.controlsfx</groupId>
             <artifactId>controlsfx</artifactId>
-            <version>11.1.1</version>
+            <version>${controlsfx.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.t-io/tio-core -->
+        <dependency>
+            <groupId>org.t-io</groupId>
+            <artifactId>tio-core</artifactId>
+            <version>${tio.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.vproxy</groupId>
+            <artifactId>vfx</artifactId>
+            <version>${vfx.version}</version>
         </dependency>
 
     </dependencies>

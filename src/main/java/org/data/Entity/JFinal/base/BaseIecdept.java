@@ -9,99 +9,99 @@ import com.jfinal.plugin.activerecord.IBean;
 @SuppressWarnings("serial")
 public abstract class BaseIecdept<M extends BaseIecdept<M>> extends Model<M> implements IBean {
 
-	public void setTCorSC(String TCorSC) {
+	public void setTCorSC(java.lang.String TCorSC) {
 		set("TCorSC", TCorSC);
 	}
 	
-	public String getTCorSC() {
+	public java.lang.String getTCorSC() {
 		return getStr("TCorSC");
 	}
 	
-	public void setPersonInCharge(String PersonInCharge) {
+	public void setPersonInCharge(java.lang.String PersonInCharge) {
 		set("PersonInCharge", PersonInCharge);
 	}
 	
-	public String getPersonInCharge() {
+	public java.lang.String getPersonInCharge() {
 		return getStr("PersonInCharge");
 	}
 	
-	public void setEstablishedTime(String establishedTime) {
+	public void setEstablishedTime(java.lang.String establishedTime) {
 		set("Established_time", establishedTime);
 	}
 	
-	public String getEstablishedTime() {
+	public java.lang.String getEstablishedTime() {
 		return getStr("Established_time");
 	}
 	
-	public void setTcorscTopicEn(String tcorscTopicEn) {
+	public void setTcorscTopicEn(java.lang.String tcorscTopicEn) {
 		set("TCorSC_Topic_en", tcorscTopicEn);
 	}
 	
-	public String getTcorscTopicEn() {
+	public java.lang.String getTcorscTopicEn() {
 		return getStr("TCorSC_Topic_en");
 	}
 	
-	public void setTcorscTopicCn(String tcorscTopicCn) {
+	public void setTcorscTopicCn(java.lang.String tcorscTopicCn) {
 		set("TCorSC_Topic_CN", tcorscTopicCn);
 	}
 	
-	public String getTcorscTopicCn() {
+	public java.lang.String getTcorscTopicCn() {
 		return getStr("TCorSC_Topic_CN");
 	}
 	
-	public void setProfessional(String Professional) {
+	public void setProfessional(java.lang.String Professional) {
 		set("Professional", Professional);
 	}
 	
-	public String getProfessional() {
+	public java.lang.String getProfessional() {
 		return getStr("Professional");
 	}
 	
-	public void setSACorTC(String SACorTC) {
+	public void setSACorTC(java.lang.String SACorTC) {
 		set("SACorTC", SACorTC);
 	}
 	
-	public String getSACorTC() {
+	public java.lang.String getSACorTC() {
 		return getStr("SACorTC");
 	}
 	
-	public void setDomesticStandardCommitment(String domesticStandardCommitment) {
+	public void setDomesticStandardCommitment(java.lang.String domesticStandardCommitment) {
 		set("domestic_standard_commitment", domesticStandardCommitment);
 	}
 	
-	public String getDomesticStandardCommitment() {
+	public java.lang.String getDomesticStandardCommitment() {
 		return getStr("domestic_standard_commitment");
 	}
 	
-	public void setContact(String Contact) {
+	public void setContact(java.lang.String Contact) {
 		set("Contact", Contact);
 	}
 	
-	public String getContact() {
+	public java.lang.String getContact() {
 		return getStr("Contact");
 	}
 	
-	public void setTechniqueChargeCompany(String techniqueChargeCompany) {
+	public void setTechniqueChargeCompany(java.lang.String techniqueChargeCompany) {
 		set("Technique_charge_company", techniqueChargeCompany);
 	}
 	
-	public String getTechniqueChargeCompany() {
+	public java.lang.String getTechniqueChargeCompany() {
 		return getStr("Technique_charge_company");
 	}
 	
-	public void setPhone(String Phone) {
+	public void setPhone(java.lang.String Phone) {
 		set("Phone", Phone);
 	}
 	
-	public String getPhone() {
+	public java.lang.String getPhone() {
 		return getStr("Phone");
 	}
 	
-	public void setEmail(String email) {
+	public void setEmail(java.lang.String email) {
 		set("email", email);
 	}
 	
-	public String getEmail() {
+	public java.lang.String getEmail() {
 		return getStr("email");
 	}
 	

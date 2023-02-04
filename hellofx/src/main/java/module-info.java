@@ -1,13 +1,14 @@
-module hellofx {
+open module hellofx {
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.swing;
     requires javafx.web;
     requires java.sql;
     requires rxcontrols;
     requires activerecord;
     requires druid;
 
-    opens org.qny to javafx.fxml;
+//    opens org.qny to javafx.fxml;
     exports org.qny;
     exports org.data.Entity.JFinal;
     exports org.data.Entity; //selectstring binding test
@@ -17,9 +18,12 @@ module hellofx {
     requires feilong;
     requires com.jfoenix;
     requires org.controlsfx.controls;
+    requires tio.core;
+    requires tio.utils;
+    requires io.vproxy.vfx;
 //    opens cn.hutool;
 //    opens com.feilong.core;
-    opens org.data.Entity2;
-    opens org.data.Mapper;
+//    opens org.data.Entity2;
+//    opens org.data.Mapper;
 
 }

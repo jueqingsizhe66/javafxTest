@@ -9,75 +9,75 @@ import com.jfinal.plugin.activerecord.IBean;
 @SuppressWarnings("serial")
 public abstract class BaseProfessor<M extends BaseProfessor<M>> extends Model<M> implements IBean {
 
-	public void setName(String Name) {
+	public void setName(java.lang.String Name) {
 		set("Name", Name);
 	}
 	
-	public String getName() {
+	public java.lang.String getName() {
 		return getStr("Name");
 	}
 	
-	public void setCompany(String Company) {
+	public void setCompany(java.lang.String Company) {
 		set("Company", Company);
 	}
 	
-	public String getCompany() {
+	public java.lang.String getCompany() {
 		return getStr("Company");
 	}
 	
-	public void setDutyAndTitle(String DutyAndTitle) {
+	public void setDutyAndTitle(java.lang.String DutyAndTitle) {
 		set("DutyAndTitle", DutyAndTitle);
 	}
 	
-	public String getDutyAndTitle() {
+	public java.lang.String getDutyAndTitle() {
 		return getStr("DutyAndTitle");
 	}
 	
-	public void setProfessional(String Professional) {
+	public void setProfessional(java.lang.String Professional) {
 		set("Professional", Professional);
 	}
 	
-	public String getProfessional() {
+	public java.lang.String getProfessional() {
 		return getStr("Professional");
 	}
 	
-	public void setPhone(String Phone) {
+	public void setPhone(java.lang.String Phone) {
 		set("Phone", Phone);
 	}
 	
-	public String getPhone() {
+	public java.lang.String getPhone() {
 		return getStr("Phone");
 	}
 	
-	public void setID(String ID) {
+	public void setID(java.lang.String ID) {
 		set("ID", ID);
 	}
 	
-	public String getID() {
+	public java.lang.String getID() {
 		return getStr("ID");
 	}
 	
-	public void setBankID(String BankID) {
+	public void setBankID(java.lang.String BankID) {
 		set("BankID", BankID);
 	}
 	
-	public String getBankID() {
+	public java.lang.String getBankID() {
 		return getStr("BankID");
 	}
 	
-	public void setBank(String Bank) {
+	public void setBank(java.lang.String Bank) {
 		set("Bank", Bank);
 	}
 	
-	public String getBank() {
+	public java.lang.String getBank() {
 		return getStr("Bank");
 	}
 	
-	public void setEmail(String Email) {
+	public void setEmail(java.lang.String Email) {
 		set("Email", Email);
 	}
 	
-	public String getEmail() {
+	public java.lang.String getEmail() {
 		return getStr("Email");
 	}
 	
